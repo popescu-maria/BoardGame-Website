@@ -1,4 +1,120 @@
-p{
-    color: green;
-    border: 2px solid blueviolet;
+/*p{*/
+/*    color: green;*/
+/*    border: 2px solid blueviolet;*/
+/*}*/
+/*rem - fata de root
+em - fata de parinte*/
+
+html{
+    font-size: 18px;
 }
+ body{
+     --spatiere-pagina:80px;
+ }
+ h2{
+     font-size: 1.6rem;
+ }
+h3{
+    font-size: 1.3rem;
+}
+img {
+    width: 50%;
+    max-width: 600px;
+    height: auto;
+}
+
+/*#grid-pagina{*/
+/*    display: grid;*/
+/*    grid-template-areas: "strategie strategie fig1"*/
+/*                         "petrecere petrecere petrecere"*/
+/*                         "cooperative cooperative cooperative";*/
+/*}*/
+
+/*#grid-pagina > *{*/
+/*    outline: 1px solid navy;*/
+/*    padding: 20px;*/
+/*}*/
+
+/*#grid-pagina > figure {*/
+/*    margin: 0;*/
+/*}*/
+/*#grid-pagina img{*/
+/*    width: 100%;*/
+/*    max-width: 300px;*/
+/*}*/
+
+/*main{*/
+/*    padding-left: var(--spatiere-pagina);*/
+/*    padding-right: var(--spatiere-pagina);*/
+/*}*/
+
+/*#welcome{*/
+/*    grid-area: welcome;*/
+/*}*/
+/*#promotii{*/
+/*    grid-area: promotii;*/
+/*}*/
+/*#anunturi{*/
+/*    grid-area: anunturi;*/
+/*}*/
+/*#orar{*/
+/*    grid-area: orar;*/
+/*}*/
+
+/*#fig1{*/
+/*    grid-area: fig1;*/
+/*}*/
+/*#fig2{*/
+/*    grid-area: fig2;*/
+/*}*/
+/*#fig3{*/
+/*    grid-area: fig3;*/
+/*}*/
+/*#produse{*/
+/*    grid-area: produse;*/
+/*}*/
+/*#index-intrebari{*/
+/*    grid-area: index-intrebari;*/
+/*}*/
+
+/*figcaption{*/
+/*    text-align:center;*/
+/*}*/
+
+
+/*@media screen and (max-width: 1200px){*/
+/*    html{*/
+/*        font-size: 14px;*/
+/*    }*/
+/*    body{*/
+/*        --spatiere-pagina:50px;*/
+/*    }*/
+/*    grid-template-rows: 1fr 1fr; !* repeat (2.1fr) *!*/
+/*    #grid-pagina{*/
+/*        display: grid;*/
+/*        grid-template-areas: "welcome welcome"*/
+/*                         "promotii promotii"*/
+/*                         "anunturi anunturi"*/
+/*                         "fig1 produse"*/
+/*                         "fig2 produse"*/
+/*                         "fig3 produse"*/
+/*                         "orar orar"*/
+/*                         "index-intrebari index-intrebari";*/
+/*    }*/
+/*}*/
+
+/*@media screen and (max-width: 800px){*/
+/*    #grid-pagina{*/
+/*        display: block;*/
+/*    }*/
+/*    html{*/
+/*        font-size: 10px;*/
+/*    }*/
+/*    body{*/
+/*        --spatiere-pagina:20px;*/
+/*    }*/
+/*}
+
+
+
+
