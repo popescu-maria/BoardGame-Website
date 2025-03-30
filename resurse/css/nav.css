@@ -1,0 +1,91 @@
+nav {
+    background-color: var(--culoare-background);
+    --inaltime-meniu: 50px;
+    --latime-buton: 200px;
+    height: var(--inaltime-meniu);
+    position: sticky;
+    top: 0;
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+}
+
+ul.meniu {
+    display: flex;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+ul.meniu li {
+    width: var(--latime-buton);
+    height: var(--inaltime-meniu);
+    box-sizing: border-box;
+    text-align: center;
+    font-weight: bold;
+    line-height: var(--inaltime-meniu);
+    transition: all 1s linear;
+    position: relative;
+    font-size: 20px;
+}
+
+ul.meniu li:hover ul {
+    display: block;
+    background-color: var(--culoare-background);
+    position: absolute;
+    list-style-type: none;
+    left: 0;
+    top: 100%;
+    width: 100%;
+}
+
+ul.meniu ul {
+    background-color: var(--culoare-background);
+    display: none;
+    padding: 0;
+    margin: 0;
+    justify-content: center;
+}
+
+ul.meniu a, ul.meniu div {
+    color: black;
+    text-decoration: none;
+    transition: all 1s linear;
+    display: block;
+    height: 100%;
+    cursor: pointer;
+}
+
+ul.meniu li div {
+    color: black;
+    text-decoration: none;
+    transition: all 0.3s linear;
+    display: block;
+    height: 100%;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+ul.meniu li:hover div {
+    transform: scale(1.2);
+}
+
+ul.meniu ul {
+    animation-name: animatie_submeniu;
+    animation-timing-function: linear;
+    animation-iteration-count: 1;
+    animation-duration: 0.20s;
+    animation-fill-mode: forwards;
+    transform-origin: 50% 0;
+}
+
+@keyframes animatie_submeniu {
+    0% {
+        opacity: 0;
+        transform: scaleY(0);
+    }
+    100% {
+        opacity: 1;
+        transform: scaleY(100%);
+    }
+}

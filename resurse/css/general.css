@@ -1,120 +1,357 @@
-/*p{*/
-/*    color: green;*/
-/*    border: 2px solid blueviolet;*/
-/*}*/
-/*rem - fata de root
-em - fata de parinte*/
-
 html{
-    font-size: 18px;
+    font-size:18px;
 }
- body{
-     --spatiere-pagina:80px;
- }
- h2{
-     font-size: 1.6rem;
- }
+
+body{
+    background-color:#FADACB;
+    --spatiere-pagina:40px;
+    --culoare-baza: #F71A0A;
+    --culoare-background:#A3433C;
+    --culoare-text:#3B3433;
+    --culoare-highlight:#CC362B;
+    --culoare-border:#7B4441;
+}
+
+h1{
+    font-family: Arial;
+    color: var(--culoare-background);
+}
+
+h2{
+    font-size: 1.6rem;
+}
+
 h3{
     font-size: 1.3rem;
 }
-img {
-    width: 50%;
-    max-width: 600px;
-    height: auto;
+
+#grid-pagina {
+    display: grid;
+    grid-template-areas:
+        ". fig1 fig1 ."
+        "about about about about"
+        "discounts  tablesection tablesection livrare-gratis"
+        "petrecere cooperative popular-strategy-games popular-strategy-games"
+        ". strategie fun-party-games recommended-coop-games"
+        "documente documente documente documente";
+    grid-template-rows: auto;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    column-gap: 20px;
 }
 
-/*#grid-pagina{*/
-/*    display: grid;*/
-/*    grid-template-areas: "strategie strategie fig1"*/
-/*                         "petrecere petrecere petrecere"*/
-/*                         "cooperative cooperative cooperative";*/
-/*}*/
+#grid-pagina > *{
+    padding: 7px;
+}
 
-/*#grid-pagina > *{*/
-/*    outline: 1px solid navy;*/
-/*    padding: 20px;*/
-/*}*/
+#grid-pagina > figure{
+    margin: 0;
+}
 
-/*#grid-pagina > figure {*/
-/*    margin: 0;*/
-/*}*/
-/*#grid-pagina img{*/
-/*    width: 100%;*/
-/*    max-width: 300px;*/
-/*}*/
+#grid-pagina img{
+    width: 100%;
+    max-width: 300px;
+}
 
-/*main{*/
-/*    padding-left: var(--spatiere-pagina);*/
-/*    padding-right: var(--spatiere-pagina);*/
-/*}*/
-
-/*#welcome{*/
-/*    grid-area: welcome;*/
-/*}*/
-/*#promotii{*/
-/*    grid-area: promotii;*/
-/*}*/
-/*#anunturi{*/
-/*    grid-area: anunturi;*/
-/*}*/
-/*#orar{*/
-/*    grid-area: orar;*/
-/*}*/
-
-/*#fig1{*/
-/*    grid-area: fig1;*/
-/*}*/
-/*#fig2{*/
-/*    grid-area: fig2;*/
-/*}*/
-/*#fig3{*/
-/*    grid-area: fig3;*/
-/*}*/
-/*#produse{*/
-/*    grid-area: produse;*/
-/*}*/
-/*#index-intrebari{*/
-/*    grid-area: index-intrebari;*/
-/*}*/
-
-/*figcaption{*/
-/*    text-align:center;*/
-/*}*/
+main{
+    padding-left: var(--spatiere-pagina);
+    padding-right: var(--spatiere-pagina);
+}
 
 
-/*@media screen and (max-width: 1200px){*/
-/*    html{*/
-/*        font-size: 14px;*/
-/*    }*/
-/*    body{*/
-/*        --spatiere-pagina:50px;*/
-/*    }*/
-/*    grid-template-rows: 1fr 1fr; !* repeat (2.1fr) *!*/
-/*    #grid-pagina{*/
-/*        display: grid;*/
-/*        grid-template-areas: "welcome welcome"*/
-/*                         "promotii promotii"*/
-/*                         "anunturi anunturi"*/
-/*                         "fig1 produse"*/
-/*                         "fig2 produse"*/
-/*                         "fig3 produse"*/
-/*                         "orar orar"*/
-/*                         "index-intrebari index-intrebari";*/
-/*    }*/
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+#fig1 img {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    filter: brightness(85%);
+}
+
+#strategie{
+    grid-area: strategie;
+    padding-top: 0;
+}
+
+#fig1 {
+    grid-area: fig1;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin: 0;
+    text-align: center;
+}
+
+#fig1 .overlay-text {
+    position: absolute;
+    color: white;
+    font-size: 1.5rem;
+    font-weight: 900;
+    text-shadow: 3px 3px 10px rgba(0, 0, 0, 1);
+    padding: 15px 30px;
+    border-radius: 8px;
+    opacity: 0;
+    animation: fadeIn 1.5s ease-in-out forwards;
+    right: 2%;
+    bottom: 13%;
+    max-width: 80%;
+}
+
+#about {
+    grid-area: about;
+}
+
+/*#did-you-know{*/
+/*    grid-area: did-you-know;*/
+/*    background-color: var(--culoare-background);*/
+/*    border-radius: 10px;*/
 /*}*/
 
-/*@media screen and (max-width: 800px){*/
-/*    #grid-pagina{*/
-/*        display: block;*/
-/*    }*/
-/*    html{*/
-/*        font-size: 10px;*/
-/*    }*/
-/*    body{*/
-/*        --spatiere-pagina:20px;*/
-/*    }*/
-/*}
+#popular-strategy-games{
+    grid-area: popular-strategy-games;
+}
 
+#petrecere{
+    grid-area: petrecere;
+    background-color: var(--culoare-background);
+    border-radius: 10px;
+    padding: 10px;
+}
 
+#fun-party-games {
+    grid-area: fun-party-games;
+}
 
+#cooperative{
+    grid-area: cooperative;
+}
 
+#recommended-coop-games {
+    grid-area: recommended-coop-games;
+}
+
+#discounts {
+    grid-area: discounts;
+}
+
+details {
+    overflow: hidden;
+    transition: max-height 0.5s ease-in-out;
+    max-height: 1em; /* This ensures the background is smaller when closed */
+    padding: 0;
+}
+
+details[open] {
+    max-height: 500px;
+    padding: 10px;
+}
+
+#documente{
+    grid-area: documente;
+}
+
+.small-margin {
+    margin-top: -20px;
+}
+
+#livrare-gratis{
+    grid-area: livrare-gratis;
+}
+
+#table-section{
+    grid-area: tablesection;
+}
+
+#stilizare-tabel {
+    border-collapse: collapse;
+    width: 100%;
+    margin-bottom: 1em;
+    border: 5px double var(--culoare-border);
+}
+
+#stilizare-tabel caption {
+    caption-side: bottom;
+    font-size: 1.2em;
+    color: var(--culoare-text);
+    padding-top: 10px;
+}
+
+#stilizare-tabel th,
+#stilizare-tabel td {
+    border: 1px solid var(--culoare-border);
+    padding: 10px;
+    text-align: left;
+    transition: all 0.75s;
+}
+
+#stilizare-tabel thead th {
+    background-color: var(--culoare-border);
+    color: white;
+}
+
+#stilizare-tabel tbody tr:hover {
+    background-color: var(--culoare-highlight);
+    color: white;
+}
+
+#stilizare-tabel tbody tr:hover td {
+    border-width: 5px;
+    color: white; /* Change text color on hover */
+}
+
+/* Alternating text colors for columns */
+#stilizare-tabel tbody td:nth-child(odd),
+#stilizare-tabel thead th:nth-child(odd) {
+    color: var(--culoare-text);
+}
+
+#stilizare-tabel tbody td:nth-child(even),
+#stilizare-tabel thead th:nth-child(even) {
+    color: var(--culoare-highlight);
+}
+
+.table-container {
+    overflow-x: auto;
+}
+
+.taburi-iframe>a{
+    display: block;
+    width: 200px;
+    height: 40px;
+    /*border: 1px solid var(--culoare-background);*/
+    background-color: var(--culoare-baza);
+    text-align: center;
+    border-radius: 0 0 10px 10px;
+    color: black;
+    text-decoration: none;
+    line-height: 40px;
+    transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out;
+    font-size: 0.8em;
+}
+
+.taburi-iframe > a:hover {
+    background-color: var(--culoare-background);
+    color: white;
+}
+
+.taburi-iframe{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 100px;
+}
+.container-iframe{
+    width: 60%;
+    max-width: 500px;
+    min-width: 200px;
+    display: flex;
+    flex-direction: column-reverse;
+}
+.container-iframe>iframe{
+    width:100%;
+}
+
+math {
+    font-family: 'Arial', sans-serif;
+    font-size: 1.5em;
+}
+.fraction {
+    color: var(--culoare-text);
+    font-weight: bold;
+}
+.operator {
+    color: var(--culoare-highlight);
+    font-style: italic;
+}
+.total-sum {
+    color: var(--culoare-text);
+    font-style: normal;
+}
+
+#link-top {
+    position: fixed;
+    bottom: 0.5em;
+    left: 0.3em;
+    width: 3rem;
+    height: 2rem;
+    text-align: center;
+    border-left: 5px solid var(--culoare-border);
+    border-right: 5px solid var(--culoare-border);
+    border-radius: 50%;
+    background: rgba(220, 220, 220, 0.5);
+    opacity: 0.5;
+    box-sizing: border-box;
+    transition: opacity 0.5s, transform 0.5s;
+}
+
+#link-top:hover {
+    opacity: 1;
+    transform: translateY(-10%);
+}
+
+#triunghi {
+    width: 0;
+    height: 0;
+    display:inline-block;
+    border-left: 0.8rem solid transparent;
+    border-right: 0.8rem solid transparent;
+    border-bottom: 1.2rem solid var(--culoare-border);
+    transition: transform 0.5s, border-bottom-color 0.5s;
+    vertical-align: middle;
+}
+
+#link-top:hover #triunghi {
+    transform: translateY(-0.3rem);
+    border-bottom-color: var(--culoare-highlight);
+}
+
+@media screen and (max-width: 1024px) {
+    html{
+        font-size:16px;
+    }
+
+    body{
+        --spatiere-pagina:50px;
+    }
+
+    #grid-pagina{
+        /*grid-template-rows: 1fr 1fr;*/
+        grid-template-areas:
+                "fig1 fig1 fig1"
+                "about about about"
+                "did-you-know strategie popular-strategy-games"
+                "sahfig petrecere petrecere"
+                "petrecere cooperative discounts"
+                "documente documente documente";
+    }
+}
+
+@media screen and (max-width:800px) {
+    #grid-pagina{
+        display: block;
+    }
+
+    html{
+        font-size:12px;
+    }
+
+    body{
+        --spatiere-pagina:20px;
+    }
+    #fig1 .overlay-text {
+        font-size: 1.8rem; /* Smaller text on mobile */
+        padding: 10px 20px;
+        bottom: 10%;
+        right: 3%;
+    }
+}

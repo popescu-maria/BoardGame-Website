@@ -1,0 +1,11 @@
+/*sub 1000 de pixeli iconurile sunt vizibile*/
+ul.meniu li div.imag-icon{
+    display: block;
+}
+
+/*selectam clasa text-icon*/
+/*de schimbat pentru toate sa se schimbe cu iconuri*/
+ul.meniu li div.text-icon{
+    display: none;
+}
+
