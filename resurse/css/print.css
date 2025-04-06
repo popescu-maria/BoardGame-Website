@@ -1,0 +1,129 @@
+@media print {
+    body {
+        position: relative;
+    }
+
+    #titlu {
+        text-align: center;
+        margin-top: 50px;
+    }
+
+    #titlu h1 {
+        font-size: 3em;
+    }
+
+    nav, .menu-wrapper, .meniu {
+        display: block;
+        visibility: visible;
+        position: static;
+        width: auto;
+        height: auto;
+        background: none;
+        padding: 0;
+        color: black;
+
+        border-bottom: none !important;
+    }
+
+    ul, ol {
+        list-style-type: none !important;
+    }
+
+    .hamburger, #toggle-menu {
+        display: none;
+    }
+
+    .meniu {
+        list-style-type: disc;
+        padding-left: 2em;
+    }
+
+    .meniu > li > ul {
+        display: block !important;
+    }
+
+    nav {
+        page-break-after: always;
+    }
+
+    section {
+        page-break-inside: avoid;
+        margin-bottom: 20px;
+    }
+
+    img, iframe, video {
+        display: none;
+    }
+
+    #fig1 {
+        display: none;
+    }
+
+    .taburi-iframe{
+        display: none;
+    }
+
+    #link-top {
+        display: none;
+    }
+
+    #regulament-pdf {
+        display: none;
+    }
+
+    #contact-info {
+        display: block !important;
+    }
+
+    #grid-pagina{
+        display: block;
+    }
+
+    a {
+        text-decoration: none;
+        color: inherit;
+    }
+
+    footer p:first-of-type {
+        position: absolute;
+        top: -60px;
+        right: 0;
+        border: 4px double black;
+        width: 50%;
+        text-align: center;
+        padding: 10px;
+        background-color: white;
+    }
+
+    footer {
+        page-break-before: always;
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    @page :left {
+        margin-left: 2cm;
+        margin-right: 1cm;
+    }
+
+    @page :right {
+        margin-left: 1cm;
+        margin-right: 2cm;
+    }
+
+    @media print {
+        .watermark {
+            display: block;
+            position: fixed;
+            width: 60%;
+            height: 10%;
+            top: 45%;
+            left: 20%;
+            text-align: center;
+            font-size: 2em;
+            color: rgba(0, 0, 0, 0.3);
+            z-index: -1;
+            pointer-events: none;
+        }
+    }
+}

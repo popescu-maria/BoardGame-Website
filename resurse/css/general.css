@@ -146,6 +146,10 @@ main{
     grid-area: discounts;
 }
 
+.watermark{
+    display: none;
+}
+
 details {
     overflow: hidden;
     transition: max-height 0.5s ease-in-out;
