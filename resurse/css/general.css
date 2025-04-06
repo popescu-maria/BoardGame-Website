@@ -3,8 +3,9 @@ html{
 }
 
 body{
-    background-color:#FADACB;
+    background-color:var(--culoare-deschisa);
     --spatiere-pagina:40px;
+    --culoare-deschisa: #FADACB;
     --culoare-baza: #F71A0A;
     --culoare-background:#A3433C;
     --culoare-text:#3B3433;
@@ -28,7 +29,7 @@ h3{
 #grid-pagina {
     display: grid;
     grid-template-areas:
-        ". fig1 fig1 ."
+        ". fig1 fig1 fig1"
         "about about about about"
         "discounts  tablesection tablesection livrare-gratis"
         "petrecere cooperative popular-strategy-games popular-strategy-games"
@@ -82,6 +83,7 @@ main{
 }
 
 #fig1 {
+    background-color: var(--culoare-background);
     grid-area: fig1;
     position: relative;
     display: flex;
@@ -247,8 +249,8 @@ details[open] {
 .taburi-iframe{
     display: flex;
     flex-direction: row;
-    justify-content: center;
-    gap: 100px;
+    justify-content: space-evenly;
+    gap: 90px;
 }
 .container-iframe{
     width: 60%;

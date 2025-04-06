@@ -9,6 +9,7 @@
     <meta name="author" content="Popescu Maria">
     <link rel="stylesheet" type="text/css" href="./resurse/css/general.css">
     <link rel="stylesheet" type="text/css" href="resurse/css/nav.css">
+
     <link rel="icon" type="image/png" href="/resurse/ico/favicon-96x96.png" sizes="96x96" />
     <link rel="icon" type="image/svg+xml" href="/resurse/ico/favicon.svg" />
     <link rel="shortcut icon" href="/resurse/ico/favicon.ico" />
@@ -19,6 +20,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Rubik+Moonrocks&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" />
+
+    <script src="/resurse/js/menu.js" defer></script>
 </head>
 <body>
 <header class="c1" id = "titlu">
@@ -26,39 +29,50 @@
 </header>
 
 <nav>
-    <ul class="meniu">
-        <li>
-            <div class="text-icon" id="jocuri">Jocuri</div>
-            <ul>
-                <li><a href="#strategie">Jocuri de strategie</a></li>
-                <li><a href="#petrecere">Jocuri de petrecere</a></li>
-                <li><a href="#cooperative">Jocuri cooperative</a></li>
-            </ul>
-        </li>
-        <li>
-            <div>Despre</div>
-            <ul>
-                <li><a href="despre.html#prezentare">Prezentare</a></li>
-                <li><a href="despre.html#istoric">Istoric</a></li>
-                <li><a href="despre.html#motivatie">Motivatie</a></li>
-                <li><a href="despre.html#galerie">Galerie</a></li>
-            </ul>
-        </li>
-        <li>
-            <div>Produse</div>
-            <ul>
-                <li><a href="#">Toate</a></li>
-                <li><a href="#">Jocuri de familie</a></li>
-                <li><a href="#">Jocuri de strategie</a></li>
-                <li><a href="#">Jocuri de petrecere</a></li>
-            </ul>
-        </li>
-        <li>
-            <a href="#contact-info">
-                <div>Contact</div>
-            </a>
-        </li>
-    </ul>
+    <input type="checkbox" id="toggle-menu">
+    <label for="toggle-menu" class="hamburger">
+        <i class="fas fa-bars"></i>
+    </label>
+    <div class="menu-wrapper">
+        <ul class="meniu">
+            <li class = "home">
+                <a href="index.html">
+                    <div class="text-icon"><i class="fas fa-home"></i> Acasa</div>
+                </a>
+            </li>
+            <li>
+                <div class="text-icon" id="jocuri">Jocuri</div>
+                <ul>
+                    <li><a href="#strategie">Jocuri de strategie</a></li>
+                    <li><a href="#petrecere">Jocuri de petrecere</a></li>
+                    <li><a href="#cooperative">Jocuri cooperative</a></li>
+                </ul>
+            </li>
+            <li>
+                <div>Despre</div>
+                <ul>
+                    <li><a href="despre.html#prezentare">Prezentare</a></li>
+                    <li><a href="despre.html#istoric">Istoric</a></li>
+                    <li><a href="despre.html#motivatie">Motivatie</a></li>
+                    <li><a href="despre.html#galerie">Galerie</a></li>
+                </ul>
+            </li>
+            <li>
+                <div>Produse</div>
+                <ul>
+                    <li><a href="#">Toate</a></li>
+                    <li><a href="#">Jocuri de familie</a></li>
+                    <li><a href="#">Jocuri de strategie</a></li>
+                    <li><a href="#">Jocuri de petrecere</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#contact-info">
+                    <div>Contact</div>
+                </a>
+            </li>
+        </ul>
+    </div>
 </nav>
 
 
