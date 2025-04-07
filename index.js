@@ -10,6 +10,14 @@ obGlobal = {
     obErori: null
 };
 
+vect_foldere=["temp", "backup", "temp1"];
+for(let folder of vect_foldere) {
+    let caleFolder=path.join(__dirname, folder);
+    if(!fs.existsSync(caleFolder)){
+        fs.mkdirSync(caleFolder);
+    }
+}
+
 function initErori() {
     let continut = fs.readFileSync(path.join(__dirname, "resurse/json/erori.json"), "utf-8");
     obGlobal.obErori = JSON.parse(continut);
@@ -75,6 +83,11 @@ app.get("/abc", (req, res) => {
     res.write(new Date().toString());
     res.end();
 });
+
+app.get(/^\/resurse\/[a-zA-Z0-9_\/]*$/, function (req, res, next) {
+    afisareEroare(res, 403);
+})
+
 app.get("/*.ejs", function (req, res, next) {
     afisareEroare(res, 400);
 })

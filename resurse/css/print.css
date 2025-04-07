@@ -28,6 +28,9 @@
     ul, ol {
         list-style-type: none !important;
     }
+    ul.meniu li {
+        border-bottom: none;
+    }
 
     .hamburger, #toggle-menu {
         display: none;
@@ -111,19 +114,17 @@
         margin-right: 2cm;
     }
 
-    @media print {
-        .watermark {
-            display: block;
-            position: fixed;
-            width: 60%;
-            height: 10%;
-            top: 45%;
-            left: 20%;
-            text-align: center;
-            font-size: 2em;
-            color: rgba(0, 0, 0, 0.3);
-            z-index: -1;
-            pointer-events: none;
-        }
+    .watermark {
+        display: block;
+        position: fixed;
+        width: 60%;
+        height: 10%;
+        top: 45%;
+        left: 20%;
+        text-align: center;
+        font-size: 2em;
+        color: rgba(0, 0, 0, 0.3);
+        z-index: -1;
+        pointer-events: none;
     }
 }

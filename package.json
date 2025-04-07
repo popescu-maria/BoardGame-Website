@@ -1,10 +1,33 @@
 {
-  "name": "BoardGame-Website",
+  "name": "boardgame-website",
   "version": "1.0.0",
-  "description": "",
+  "description": "Press Start",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "private": true
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/popescu-maria/BoardGame-Website.git"
+  },
+  "keywords": [
+    "board",
+    "game",
+    "jocuri",
+    "jocuri",
+    "de",
+    "societate",
+    "petrecere"
+  ],
+  "author": "Maria Popescu",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/popescu-maria/BoardGame-Website/issues"
+  },
+  "homepage": "https://github.com/popescu-maria/BoardGame-Website#readme",
+  "dependencies": {
+    "ejs": "^3.1.10",
+    "express": "^4.21.2"
+  }
 }
