@@ -1,0 +1,49 @@
+a {
+    color: var(--culoare-link);
+    text-decoration: none;
+}
+
+a[href^="http"] {
+    position: relative;
+    color: var(--culoare-link);
+}
+
+a[href^="http"]::before {
+    content: " ⮳";
+    font-size: 1.5em;
+    position: absolute;
+    right: -1.2em;
+    top: -0.4em;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+a[href^="http"]:hover::before {
+    color: var(--culoare-text);
+}
+
+a[href^="http"]:hover::before {
+    color: var(--culoare-text);
+}
+
+a:not([href^="http"]) {
+    position: relative;
+    padding: 0.2em 0.1em;
+    border-radius: 3px;
+
+    background-image: radial-gradient(
+            var(--culoare-neutra) 0%,
+            var(--culoare-neutra) 40%,
+            transparent 80%,
+            transparent 100%
+    );
+    background-position: center center;
+    background-size: 0 0;
+    background-repeat: no-repeat;
+
+    transition: background-size 0.5s ease;
+}
+
+a:not([href^="http"]):hover {
+    background-size: 100% 100%;
+}

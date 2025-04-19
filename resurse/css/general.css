@@ -6,11 +6,13 @@ body{
     background-color:var(--culoare-deschisa);
     --spatiere-pagina:40px;
     --culoare-deschisa: #FADACB;
+    --culoare-neutra: #A07973;
     --culoare-baza: #F71A0A;
     --culoare-background:#A3433C;
     --culoare-text:#3B3433;
     --culoare-highlight:#CC362B;
     --culoare-border:#7B4441;
+    --culoare-link: var(--culoare-highlight);
 }
 
 h1{
@@ -29,12 +31,12 @@ h3{
 #grid-pagina {
     display: grid;
     grid-template-areas:
-        ". fig1 fig1 fig1"
+        "fig1 fig1 fig1 fig1"
         "about about about about"
         "discounts  tablesection tablesection livrare-gratis"
         "petrecere cooperative popular-strategy-games popular-strategy-games"
         ". strategie fun-party-games recommended-coop-games"
-        "documente documente documente documente";
+        "sezoniale sezoniale documente documente";
     grid-template-rows: auto;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     column-gap: 20px;
@@ -70,9 +72,10 @@ main{
     }
 }
 
+/*De modificat imagine*/
 #fig1 img {
     width: 100%;
-    max-width: 100%;
+    max-width: 1000px;
     height: auto;
     filter: brightness(85%);
 }
@@ -104,9 +107,13 @@ main{
     border-radius: 8px;
     opacity: 0;
     animation: fadeIn 1.5s ease-in-out forwards;
-    right: 2%;
+    right: 15%;
     bottom: 13%;
     max-width: 80%;
+}
+
+#sezoniale {
+    grid-area: sezoniale;
 }
 
 #about {

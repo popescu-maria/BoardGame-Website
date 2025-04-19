@@ -1,70 +1,66 @@
 <!DOCTYPE html>
 <html lang="ro">
-<head>
-    <title>Press Start</title>
 
-    <meta name="keywords" content="board games, jocuri, jocuri de societate, sah, petrecere">
-    <meta name="description" content="Jocuri de societate.">
-    <%- include("../fragmente/head.ejs") %>
+<%- include("../fragmente/head.ejs") %>
 
-</head>
 <body>
 <%- include("../fragmente/header.ejs") %>
 
 <main>
     <div id="grid-pagina">
+        <section id="about" class="game-category">
+            <h2>Despre Site</h2>
+            <p class="description">Acest site este dedicat pasionaților de jocuri de societate. Oferim informații despre cele mai populare jocuri, strategii și noutăți în domeniu. Scopul nostru este să creăm o comunitate unită de jucători, unde fiecare poate găsi inspirație și parteneri de joc. Indiferent dacă ești un jucător experimentat sau abia ai descoperit lumea jocurilor de societate, aici vei găsi resurse utile și recomandări pentru toate gusturile.</p>
+        </section>
+        <figure id="fig1" class="game-image">
+            <img src="resurse/imagini/imaginePrincipala.png" alt="dragon">
+            <div class="overlay-text">Enter the Realm of Strategy!</div>
+        </figure>
+
         <section id="strategie" class="game-category">
             <h2>Jocuri de strategie</h2>
             <p class="description">Jocurile de societate de <b>strategie</b> sunt ideale pentru cei care iubesc provocările intelectuale și
                 planificarea atentă. Acestea necesită gândire logică, adaptabilitate și o viziune pe termen lung pentru a
                 învinge adversarii.Cu mecanici variate și scenarii captivante, jocurile de <b>strategie</b>
                 oferă o experiență dinamică, în care abilitățile tale sunt puse constant la încercare.</p>
-            <p><b>Ip: </b><%- locals.ip %></p>
-            <figure class="game-image">
-                <picture id="sahfig">
-                    <source srcset="/resurse/imagini/sah-mica.jpg" media="(max-width: 600px)">
-                    <source srcset="/resurse/imagini/sah-mediu.jpg" media="(max-width: 1024px)">
-                    <img src="/resurse/imagini/sah.jpg" alt="Sah">
-                </picture>
-                <figcaption>Sah.</figcaption>
-            </figure>
-            <aside class="fact-box">
-                <h3><i>Did You Know?</i></h3>
-                <p>Cel mai vechi joc de strategie cunoscut este <b>Senet</b>, un joc egiptean care datează de peste 5000 de ani! Se crede că era jucat chiar de faraoni.</p>
-            </aside>
+        </section>
 
-            <section>
-                <h3>Jocuri de strategie populare</h3>
-                <details>
-                    <summary>Vezi lista de jocuri</summary>
-                    <ul>
-                        <li>Șah</li>
-                        <li>Risk</li>
-                        <li>Catan</li>
-                    </ul>
-                </details>
-            </section>
+        <section id="livrare-gratis" class="game-category">
+            <h2><i class="fas fa-truck"></i> Livrare Gratis</h2>
+            <p class="small-margin">la jocurile de strategie</p>
+        </section>
 
-            <p>
-                Află mai multe despre jocuri de strategie pe
-                <a href="https://boardgamegeek.com" target="_blank">BoardGameGeek</a>.
-            </p>
+        <!--        <section id="did-you-know" class="game-category">-->
+        <!--            <h2>Did You Know?</h2>-->
+        <!--            <aside class="fact-box">-->
+        <!--                <p>Cel mai vechi joc de strategie cunoscut este <b>Senet</b>, un joc egiptean care datează de peste 5000 de ani! Se crede că era jucat chiar de faraoni.</p>-->
+        <!--            </aside>-->
+        <!--        </section>-->
 
+        <section id="popular-strategy-games" class="game-category">
+            <!--            <h2>Jocuri de strategie populare</h2>-->
+            <!--            <details>-->
+            <!--                <summary>Vezi lista de jocuri</summary>-->
+            <!--                <ul>-->
+            <!--                    <li>Șah</li>-->
+            <!--                    <li>Risk</li>-->
+            <!--                    <li>Catan</li>-->
+            <!--                </ul>-->
+            <!--            </details>-->
+            <!--            <p>-->
+            <!--                Află mai multe despre jocuri de strategie pe-->
+            <!--                <a href="https://boardgamegeek.com" target="_blank">BoardGameGeek</a>.-->
+            <!--            </p>-->
             <div class="container-iframe">
                 <div class="taburi-iframe">
                     <a href="https://www.youtube.com/embed/OCSbzArwB10" target="ifr-video">Tutorial sah</a>
-                    <a href="https://www.youtube.com/embed/YdnvlntAQH8" target="ifr-video">Alt tutorial sah</a><br/>
+                    <a href="https://www.youtube.com/embed/pSRGErzzIo4" target="ifr-video">poker</a>
+                    <a href="https://www.youtube.com/embed/8Yj0Y3GKE40" target="ifr-video">catan</a>
                 </div>
 
                 <iframe name="ifr-video" width="560" height="315" src="https://www.youtube.com/embed/OCSbzArwB10"
                         frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
-
-        </section>
-        <section id="img">
-            <figure id="fig1" class="game-image">
-                <img src="resurse/imagini/imaginePrincipala.png" alt="dragon">
-            </figure>
         </section>
 
         <section id="petrecere" class="game-category">
@@ -74,17 +70,18 @@
                 pot fi extrem de captivante și pline de surprize. Fie că este vorba de jocuri de masă, jocuri de cărți sau
                 jocuri interactive, jocurile de <b>familie</b> ajută la întărirea legăturilor între membri, stimulând
                 comunicarea, spiritul de echipă și, desigur, distracția.</p>
-            <section>
-                <h3>Cele mai distractive jocuri de petrecere</h3>
-                <details>
+        </section>
+
+        <section id="fun-party-games" class="game-category">
+            <h3>Cele mai distractive jocuri de petrecere</h3>
+            <details>
                 <summary>Vezi lista de jocuri</summary>
-                    <ul>
-                        <li>Dixit</li>
-                        <li>Activity</li>
-                        <li>Jungle Speed</li>
-                    </ul>
-                </details>
-            </section>
+                <ul>
+                    <li>Dixit</li>
+                    <li>Activity</li>
+                    <li>Jungle Speed</li>
+                </ul>
+            </details>
         </section>
 
         <section id="cooperative" class="game-category">
@@ -96,45 +93,111 @@
                 participanții trebuie să le depășească împreună. Aceste <b>jocuri</b> încurajează comunicarea, creativitatea
                 și încrederea reciprocă, făcându-le o alegere excelentă pentru grupuri care doresc să se sprijine unii pe
                 alții în fața unor provocări comune.</p>
-            <section>
-                <h3>Jocuri cooperative recomandate</h3>
-                <details>
-                    <summary>Vezi lista de jocuri</summary>
-                    <ul>
-                        <li>Pandemic</li>
-                        <li>Forbidden Island</li>
-                        <li>Gloomhaven</li>
-                    </ul>
-                </details>
-            </section>
         </section>
+
+        <section id="recommended-coop-games" class="game-category">
+            <h3>Jocuri cooperative recomandate</h3>
+            <details>
+                <summary>Vezi lista de jocuri</summary>
+                <ul>
+                    <li>Pandemic</li>
+                    <li>Forbidden Island</li>
+                    <li>Gloomhaven</li>
+                </ul>
+            </details>
+        </section>
+
         <section id="discounts">
             <h2>Reduceri!</h2>
             <details>
                 <summary>Calculul unei reduceri</summary>
                 <p>Reducerea se aplică atunci când cumperi două jocuri din aceeași categorie și este dată de formula:</p>
                 <math xmlns="http://www.w3.org/1998/Math/MathML">
-                    <mfrac>
+                    <mfrac class="fraction">
                         <mn>1</mn>
                         <mn>10</mn>
                     </mfrac>
-                    <mo>×</mo>
-                    <mi>Suma totală</mi>
+                    <mo class="operator">×</mo>
+                    <mi class="total-sum">Suma totală</mi>
                 </math>
             </details>
         </section>
+
         <section id="documente">
             <h2>Regulament Șah</h2>
             <p>Descarcă regulamentul oficial al șahului:</p>
             <a href="resurse/documente/regulament_sah.pdf" download="regulament_sah.pdf">Click aici</a>
             <p>Pentru a consulta regulamentul oficial al șahului direct în pagină, folosiți vizualizarea de mai jos:</p>
 
-            <embed src="/resurse/documente/regulament_sah.pdf" type="application/pdf" width="50%" height="400px" />
+            <embed id="regulament-pdf" src="resurse/documente/regulament_sah.pdf" type="application/pdf" width="50%" height="400px" />
+        </section>
+
+        <section id="sezoniale">
+            <h2>Reduceri la Monopoly Junior!! Doar saptamana aceasta!</h2>
+            <video controls preload="metadata" poster="resurse/imagini/monopoly.jpg" width="100%"
+                   style="min-width: 250px; max-width: 800px;">
+
+                <source src="resurse/video/MonopolyJunior.mp4" type="video/mp4">
+                <source src="resurse/video/MonopolyJunior.webm" type="video/webm">
+
+                <track src="resurse/subs/subtitrari-ro.vtt" kind="subtitles" srclang="ro" label="Română" default>
+                <track src="resurse/subs/subtitrari-en.vtt" kind="subtitles" srclang="en" label="English">
+
+                Your browser does not support the video tag.
+            </video>
+        </section>
+
+        <section id="table-section">
+            <div class="table-container">
+                <table id="stilizare-tabel">
+                    <caption>Evenimente de Neratat!</caption>
+                    <thead>
+                    <tr>
+                        <th>Data</th>
+                        <th>Eveniment</th>
+                        <th>Locație</th>
+                        <th>Detalii</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>2025-04-10</td>
+                        <td>Lansare Joc Nou</td>
+                        <td>Cluj-Napoca</td>
+                        <td rowspan="2">Prezintă noile funcționalități ale jocului</td>
+                    </tr>
+                    <tr>
+                        <td>2025-05-15</td>
+                        <td>Târg de Jocuri</td>
+                        <td>București</td>
+                    </tr>
+                    <tr>
+                        <td>2025-06-20</td>
+                        <td>Conferință Dezvoltatori</td>
+                        <td>Cluj-Napoca</td>
+                        <td>Eveniment pentru schimb de idei și networking</td>
+                    </tr>
+                    <tr>
+                        <td>2025-07-25</td>
+                        <td>Workshop Strategie</td>
+                        <td>Iași</td>
+                        <td>Atelier pentru dezvoltarea abilităților de strategie</td>
+                    </tr>
+                    </tbody>
+                    <tfoot>
+                    <tr>
+                        <td colspan="4">Pentru mai multe detalii, vizitați site-ul nostru.</td>
+                    </tr>
+                    </tfoot>
+                </table>
+            </div>
         </section>
     </div>
 </main>
 
 <%- include("../fragmente/footer.ejs") %>
+
+<div class="watermark">Popescu<br>Maria</div>
 
 </body>
 </html>
