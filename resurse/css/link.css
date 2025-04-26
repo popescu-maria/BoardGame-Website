@@ -26,7 +26,7 @@ a[href^="http"]:hover::before {
     color: var(--culoare-text);
 }
 
-a:not([href^="http"]) {
+a:not([href^="http"]):not(:is(nav a)) {
     position: relative;
     padding: 0.2em 0.1em;
     border-radius: 3px;
@@ -44,6 +44,6 @@ a:not([href^="http"]) {
     transition: background-size 0.5s ease;
 }
 
-a:not([href^="http"]):hover {
+a:not([href^="http"]):not(:is(nav a)):hover {
     background-size: 100% 100%;
 }
