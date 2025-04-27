@@ -34,6 +34,7 @@ h3{
         "fig1 fig1 fig1 fig1"
         "about about about about"
         "discounts  tablesection tablesection livrare-gratis"
+        "galerie galerie galerie galerie"
         "petrecere cooperative popular-strategy-games popular-strategy-games"
         ". strategie fun-party-games recommended-coop-games"
         "sezoniale sezoniale documente documente";
@@ -83,6 +84,10 @@ main{
 #strategie{
     grid-area: strategie;
     padding-top: 0;
+}
+
+.grid-galerie{
+    grid-area: galerie;
 }
 
 #fig1 {

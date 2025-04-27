@@ -46,6 +46,14 @@ for(let folder of vect_foldere) {
     }
 }
 
+function getSeason() {
+    const month = new Date().getMonth() + 1;
+    if ([12, 1, 2].includes(month)) return "iarna";
+    if ([3, 4, 5].includes(month)) return "primavara";
+    if ([6, 7, 8].includes(month)) return "vara";
+    if ([9, 10, 11].includes(month)) return "toamna";
+}
+
 function compileazaScss(caleScss, caleCss){
     console.log("cale:",caleCss);
     if(!caleCss){
@@ -151,9 +159,9 @@ function afisareEroare(res, identificator, titlu, text, imagine) {
     res.render("pagini/eroare", { titlu, text, imagine });
 }
 
-console.log("Folderul proiectului: ", __dirname);
-console.log("Cale fisier index.js: ", __filename);
-console.log("Folderul de lucru: ", process.cwd());
+// console.log("Folderul proiectului: ", __dirname);
+// console.log("Cale fisier index.js: ", __filename);
+// console.log("Folderul de lucru: ", process.cwd());
 
 app.use("/resurse", express.static(path.join(__dirname, 'resurse')));
 app.use("/node_modules", express.static(path.join(__dirname, 'node_modules')));
@@ -163,7 +171,9 @@ app.get("/favicon.ico", function(req, res) {
 })
 
 app.get(["/", "/index", "/home"], (req, res) => {
-    res.render("pagini/index", { ip: req.ip, imagini:obGlobal.obImagini.imagini});
+    const sezonCurent = getSeason();
+    const imaginiFiltrate = obGlobal.obImagini.imagini.filter(imag => imag.anotimp && imag.anotimp.includes(sezonCurent));
+    res.render("pagini/index", { ip: req.ip, imagini: imaginiFiltrate });
 });
 
 app.get("/index/a", (req, res) => {
@@ -238,7 +248,6 @@ app.get("/*", (req, res) => {
         }
     }
 });
-
 
 app.listen(8080, () => {
     console.log("Serverul a pornit pe portul 8080");

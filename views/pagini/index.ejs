@@ -12,6 +12,20 @@
             <h2>Despre Site</h2>
             <p class="description">Acest site este dedicat pasionaților de jocuri de societate. Oferim informații despre cele mai populare jocuri, strategii și noutăți în domeniu. Scopul nostru este să creăm o comunitate unită de jucători, unde fiecare poate găsi inspirație și parteneri de joc. Indiferent dacă ești un jucător experimentat sau abia ai descoperit lumea jocurilor de societate, aici vei găsi resurse utile și recomandări pentru toate gusturile.</p>
         </section>
+
+        <div class="grid-galerie">
+            <% let nr = 1; %>
+            <% for (let img of imagini) { %>
+                <figure>
+                    <picture>
+                        <source srcset="<%= img.fisier_mediu %>" type="image/webp">
+                        <img src="<%= img.fisier %>" alt="<%= img.alt ? img.alt : img.fisier.split('.')[0] %>" title="<%= img.descriere %>">
+                    </picture>
+                    <figcaption><%= img.descriere %></figcaption>
+                </figure>
+            <% } %>
+        </div>
+
         <figure id="fig1" class="game-image">
             <img src="resurse/imagini/imaginePrincipala.png" alt="dragon">
             <div class="overlay-text">Enter the Realm of Strategy!</div>
