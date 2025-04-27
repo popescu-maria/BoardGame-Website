@@ -242,7 +242,7 @@ details[open] {
     width: 200px;
     height: 40px;
     /*border: 1px solid var(--culoare-background);*/
-    background-color: var(--culoare-baza);
+    background-color: var(--culoare-neutra);
     text-align: center;
     border-radius: 0 0 10px 10px;
     color: black;

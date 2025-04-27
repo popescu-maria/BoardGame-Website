@@ -16,6 +16,7 @@ client = new Client({
 })
 
 client.connect()
+
 client.query("select * from prajituri", function(err, rezultat ){
     console.log(err)
     console.log(rezultat)
