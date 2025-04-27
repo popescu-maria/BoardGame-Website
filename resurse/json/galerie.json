@@ -1,0 +1,50 @@
+{
+	"cale_galerie": "resurse/imagini/galerie",
+	"imagini": [
+		{
+			"fisier": "Avalon.png",
+			"descriere": "Avalon",
+			"anotimp": ["primavara", "iarna"]
+		},
+		{
+			"fisier": "Cascadia.png",
+			"descriere": "Cascadia",
+			"anotimp": ["primavara","iarna", "vara"]
+		},
+		{
+			"fisier": "Catan.png",
+			"descriere": "Catan joc de baza",
+			"anotimp": ["primavara", "vara", "iarna"]
+		},
+		{
+			"fisier": "Pandemic.png",
+			"descriere": "Pandemic",
+			"anotimp": ["primavara","iarna"]
+		},
+		{
+			"fisier": "PlanetX.png",
+			"descriere": "Planet X",
+			"anotimp": ["iarna"]
+		},
+		{
+			"fisier": "Root.png",
+			"descriere": "Root",
+			"anotimp": ["primavara","iarna"]
+		},
+		{
+			"fisier": "SantaMaria.png",
+			"descriere": "Santa Maria",
+			"anotimp": ["primavara","iarna"]
+		},
+		{
+			"fisier": "Scythe.png",
+			"descriere": "Scythe",
+			"anotimp": ["primavara","iarna"]
+		},
+		{
+			"fisier": "Terraforming.png",
+			"descriere": "Terraforming Mars",
+			"anotimp": ["primavara","iarna"]
+		}
+	]
+}
