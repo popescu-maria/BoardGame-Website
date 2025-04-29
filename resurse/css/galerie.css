@@ -1,10 +1,13 @@
 .grid-galerie {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-gap: 1rem;
-    width: 100%;
-    margin: 0;
-    counter-reset: imagini;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(5, auto);
+    gap: 1rem;
+    grid-template-areas:
+    "img1 img2 img3"
+    "img4 .    img5"
+    "img6 img7 img8"
+    "img9 img10 .";
 }
 
 .grid-galerie figure {
@@ -18,6 +21,17 @@
     transition: transform 0.125s ease, opacity 0.125s ease, border-radius 0.125s ease;
 }
 
+.grid-galerie .img1  { grid-area: img1; }
+.grid-galerie .img2  { grid-area: img2; }
+.grid-galerie .img3  { grid-area: img3; }
+.grid-galerie .img4  { grid-area: img4; }
+.grid-galerie .img5  { grid-area: img5; }
+.grid-galerie .img6  { grid-area: img6; }
+.grid-galerie .img7  { grid-area: img7; }
+.grid-galerie .img8  { grid-area: img8; }
+.grid-galerie .img9  { grid-area: img9; }
+.grid-galerie .img10 { grid-area: img10; }
+
 .grid-galerie img {
     width: 100%;
     height: auto;
@@ -25,7 +39,7 @@
 }
 
 .grid-galerie figure:hover img {
-    transform: scale(1.1);
+    transform: scale(1.06);
     opacity: 0.5;
     border-radius: 15px;
 }

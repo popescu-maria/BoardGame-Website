@@ -13,18 +13,18 @@
             <p class="description">Acest site este dedicat pasionaților de jocuri de societate. Oferim informații despre cele mai populare jocuri, strategii și noutăți în domeniu. Scopul nostru este să creăm o comunitate unită de jucători, unde fiecare poate găsi inspirație și parteneri de joc. Indiferent dacă ești un jucător experimentat sau abia ai descoperit lumea jocurilor de societate, aici vei găsi resurse utile și recomandări pentru toate gusturile.</p>
         </section>
 
-        <div class="grid-galerie">
-            <% let nr = 1; %>
-            <% for (let img of imagini) { %>
-                <figure>
+        <% const gridAreas = ["img1", "img2", "img3", "img4", "img5", "img6", "img7", "img8", "img9", "img10"]; %>
+        <section class="grid-galerie">
+            <% for (let i = 0; i < Math.min(imagini.length, 10); i++) { %>
+                <figure class="<%= gridAreas[i] %>">
                     <picture>
-                        <source srcset="<%= img.fisier_mediu %>" type="image/webp">
-                        <img src="<%= img.fisier %>" alt="<%= img.alt ? img.alt : img.fisier.split('.')[0] %>" title="<%= img.descriere %>">
+                        <source srcset="<%= imagini[i].fisier_mediu %>" type="image/webp">
+                        <img src="<%= imagini[i].fisier %>" alt="<%= imagini[i].alt || imagini[i].fisier.split('/').pop().split('.')[0] %>">
                     </picture>
-                    <figcaption><%= img.descriere %></figcaption>
+                    <figcaption><%= imagini[i].descriere %></figcaption>
                 </figure>
             <% } %>
-        </div>
+        </section>
 
         <figure id="fig1" class="game-image">
             <img src="resurse/imagini/imaginePrincipala.png" alt="dragon">
