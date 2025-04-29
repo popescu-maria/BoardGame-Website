@@ -1,0 +1,59 @@
+// Import Bootstrap SASS with custom variables
+@use '../../node_modules/bootstrap/scss/bootstrap' as * with (
+    $primary: #731414,
+    $secondary: #F2E3B3,
+
+    $body-color: #343a40,
+    $link-color: #CF4F2B,
+
+    //$btn-primary-bg: #731414,
+    //$btn-primary-color: #ffffff,
+    //$btn-secondary-bg: #F2E3B3,
+
+    $grid-breakpoints: (
+        sm: 576px,
+        md: 800px,
+        lg: 1100px,
+        xl: 1400px,
+        xxl: 1600px
+    ),
+
+    $border-radius: 1rem,
+    $border-radius-lg: 1.5rem,
+    $border-radius-sm: 0.5rem,
+
+    $font-size-base: 1rem,
+    $line-height-base: 1.5,
+    $spacer: 1rem,
+
+    $h1-font-size: 2.5rem,
+    $h2-font-size: 2rem,
+    $h3-font-size: 1.75rem,
+    $h4-font-size: 1.5rem,
+    $h5-font-size: 1.25rem,
+    $h6-font-size: 1rem,
+
+    $font-family-base: 'Roboto'
+);
+
+$dark-body-color: #C94C4C;
+$dark-link-color: #B34A66;
+$dark-bg-color: #26070C;
+
+body.light-theme {
+  background-color: #FADACB;
+  color: $body-color;
+
+  a {
+    color: $link-color;
+  }
+}
+
+body.dark-theme {
+  background-color: $dark-bg-color;
+  color: $dark-body-color;
+
+  a {
+    color: $dark-link-color;
+  }
+}
