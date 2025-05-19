@@ -13,6 +13,23 @@ body{
     --culoare-highlight:#CC362B;
     --culoare-border:#7B4441;
     --culoare-link: var(--culoare-highlight);
+    body.dark {
+        background-color: #26070C;
+        --spatiere-pagina:40px;
+
+        --culoare-deschisa: #26070C;
+        --culoare-neutra: #5a1f1f;
+        --culoare-baza: #C94C4C;
+        --culoare-background: #3c0f0f;
+        --culoare-text: #C94C4C;
+        --culoare-highlight: #B34A66;
+        --culoare-border: #5a1f1f;
+        --culoare-link: #B34A66;
+    }
+}
+
+body.dark {
+/*    schimb culorile*/
 }
 
 h1{

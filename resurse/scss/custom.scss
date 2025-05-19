@@ -1,14 +1,9 @@
-// Import Bootstrap SASS with custom variables
 @use '../../node_modules/bootstrap/scss/bootstrap' as * with (
-    $primary: #731414,
-    $secondary: #F2E3B3,
+    $primary: #a54848,
+    $secondary: #bf6262,
 
     $body-color: #343a40,
     $link-color: #CF4F2B,
-
-    //$btn-primary-bg: #731414,
-    //$btn-primary-color: #ffffff,
-    //$btn-secondary-bg: #F2E3B3,
 
     $grid-breakpoints: (
         sm: 576px,
@@ -19,7 +14,7 @@
     ),
 
     $border-radius: 1rem,
-    $border-radius-lg: 1.5rem,
+    $border-radius-lg: 0.5rem,
     $border-radius-sm: 0.5rem,
 
     $font-size-base: 1rem,
@@ -33,12 +28,21 @@
     $h5-font-size: 1.25rem,
     $h6-font-size: 1rem,
 
+    $form-range-thumb-width: 1.5rem,
+    $form-range-thumb-height: 1.5rem,
+    $form-range-thumb-bg: var(--culoare-border),
+    $form-range-track-bg: var(--culoare-neutra),
+
     $font-family-base: 'Roboto'
 );
 
 $dark-body-color: #C94C4C;
 $dark-link-color: #B34A66;
 $dark-bg-color: #26070C;
+
+.btn-primary, .btn-secondary {
+  box-shadow: 0 0 0 2px #731414;
+}
 
 body.light-theme {
   background-color: #FADACB;
@@ -55,5 +59,19 @@ body.dark-theme {
 
   a {
     color: $dark-link-color;
+  }
+  .btn {
+    background-color: #5a1f1f;
+    color: white;
+  }
+
+  .form-control {
+    background-color: #401919;
+    color: white;
+  }
+
+  .card {
+    background-color: #3c0f0f;
+    border-color: #5a1f1f;
   }
 }

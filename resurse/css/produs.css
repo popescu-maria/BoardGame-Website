@@ -1,0 +1,78 @@
+h2{
+    padding:0.4rem;
+}
+
+#art-produs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 1rem;
+    width: 100%;
+    max-width: 900px;
+    box-shadow: 0px 0px 10px 5px grey;
+    padding: 1rem;
+    background-color: var(--culoare-neutra);
+    margin: 0 auto;
+}
+
+.nume{
+    color: var(--culoare-border);
+    font-weight: bold;
+}
+
+.col-stanga, .col-dreapta {
+    display: flex;
+    flex-direction: column;
+}
+
+.col-dreapta {
+    padding-top: 7rem;
+}
+
+.imag-produs {
+    text-align: center;
+}
+
+.imag-produs img {
+    width: 100%;
+    height: auto;
+}
+
+#art-produs p{
+    display: flex;
+    margin:0;
+    /*padding:0.4rem;*/
+    border: 1px solid var(--culoare-border);
+    border-radius: 0.4rem;
+    font-size:1.1rem;
+}
+
+#art-produs p strong {
+    background-color: var(--culoare-background);
+    border-top-left-radius: 0.4rem;
+    border-bottom-left-radius: 0.4rem;
+    padding: 0.2em 0.5em;
+    font-weight: bold;
+    min-width: 12em;
+}
+
+#art-produs p span, p time {
+    background-color: var(--culoare-deschisa);
+    border-top-right-radius: 0.4rem;
+    border-bottom-right-radius: 0.4rem;
+    padding: 0.2em 0.5em;
+    flex: 1;
+}
+
+.imag-produs{
+    text-align: center;
+}
+.imag-produs img{
+    width:80%;
+    height:auto;
+}
+@media screen and (max-width: 700px){
+    #art-produs{
+        margin:0 auto;
+        width:95%;
+    }
+}

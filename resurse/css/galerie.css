@@ -1,4 +1,5 @@
 .grid-galerie {
+    counter-reset: imagini;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(5, auto);
@@ -50,7 +51,7 @@
 .grid-galerie figcaption::before {
     content: counter(imagini, lower-roman) ". ";
     font-weight: bold;
-    color: var(--culoare-text);
+    color: var(--culoare-text, #000);
     margin-right: 0.4rem;
 }
 
@@ -71,7 +72,7 @@
     .grid-galerie>figure:nth-child(10) { grid-area: 5 / 2 / 6 / 3; }
 }
 
-@media (max-width: 768px) {
+    @media (max-width: 768px) {
     .grid-galerie {
         grid-template-columns: 1fr;
     }

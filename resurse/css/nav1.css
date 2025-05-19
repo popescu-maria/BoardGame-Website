@@ -176,7 +176,7 @@ ul.meniu ul li:hover::after {
         display: block;
         font-size: 30px;
         cursor: pointer;
-        z-index: 10001;
+        z-index: 1000;
     }
 
     #toggle-menu {

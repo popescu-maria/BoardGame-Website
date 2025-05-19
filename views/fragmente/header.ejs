@@ -1,3 +1,4 @@
+<script src="/resurse/js/tema.js"></script>
 <header class="c1" id = "titlu">
     <h1><i lang="ro"> <span>Press Start</span></i></h1>
 
@@ -31,12 +32,12 @@
                     </ul>
                 </li>
                 <li>
-                    <div>Produse</div>
+                    <div>Jocuri</div>
                     <ul>
                         <li><a href="/produse">Toate</a></li>
-                        <li><a href="/produse?tip=cofetarie">Jocuri de familie</a></li>
-                        <li><a href="/produse?tip=patiserie">Jocuri de strategie</a></li>
-                        <li><a href="/produse?tip=gelaterie">Jocuri de petrecere</a></li>
+                        <% for (let opt of locals.optiuniMeniu){ %>
+                            <li><a href="/produse?tip=<%= opt.unnest %>"><%= opt.unnest %></a></li>
+                        <% } %>
                     </ul>
                 </li>
                 <li>

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta name="description" content="Magazinul de jocuri de societate: strategie, familie, cooperative și petrecere.">
+    <meta name="keywords" content="jocuri, societate, strategie, familie, cooperative, petrecere, board games">
+    <link rel="stylesheet" href="/resurse/css/produse.css" type="text/css" />
+    <title>Press Start - Jocuri</title>
+    <%- include("../fragmente/head") %>
+    <script type="text/javascript" src="/resurse/js/produse.js"></script>
+    <script type="text/javascript" src="/resurse/js/produse-cos.js"></script>
+</head>
+<body>
+<%- include("../fragmente/header") %>
+
+<main class="container py-4">
+    <div class="row g-3">
+
+        <div class="col-lg-8">
+            <div class="row g-3">
+                <div class="col-md-6">
+                    <label for="inp-nume" class="form-label">Nume:</label>
+                    <input type="text" id="inp-nume" class="form-control" list="lista-nume">
+                    <datalist id="lista-nume">
+                        <% for (let prod of locals.produse) { %>
+                        <option value="<%- prod.nume %>">
+                            <% } %>
+                    </datalist>
+                </div>
+
+                <div class="col-md-6">
+                    <label for="inp-varsta" class="form-label">Vârsta minimă:</label>
+                    <input type="number" id="inp-varsta" class="form-control" value="0" min="0">
+                </div>
+
+                <div class="col-12">
+                    <label class="form-label d-block">Număr de jucători:</label>
+                    <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                        <label class="btn btn-outline-primary">
+                            Până la 2 <input id="i_rad1" name="options" value="0:2" type="radio" autocomplete="off">
+                        </label>
+                        <label class="btn btn-outline-primary">
+                            3-5 <input id="i_rad2" name="options" value="3:5" type="radio" autocomplete="off">
+                        </label>
+                        <label class="btn btn-outline-primary">
+                            6 sau mai mulți <input id="i_rad3" name="options" value="6:100" type="radio" autocomplete="off">
+                        </label>
+                        <label class="btn btn-outline-primary">
+                            Oricâți <input id="i_rad4" name="options" value="toate" type="radio" autocomplete="off" checked>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <label for="inp-categorie" class="form-label">Categorie:</label>
+                    <select id="inp-categorie" class="form-select">
+                        <option id="sel-toate" selected value="toate">toate</option>
+                        <% for (let opt of locals.optiuni) { %>
+                            <option value="<%- opt.unnest %>"><%- opt.unnest %></option>
+                        <% } %>
+                    </select>
+                </div>
+
+                <div class="col-md-6 d-flex align-items-center">
+                    <label for="inp-pret" class="form-label me-2 mb-0">Preț minim: <span id="infoRange">(0)</span></label>
+                    <input type="range" id="inp-pret" class="form-range flex-grow-1" value="0" min="0" max="500">
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-4">
+            <label for="inp-componente" class="form-label">Componente:</label>
+            <select id="inp-componente" name="componente" multiple size="9" class="form-select">
+                <option value="orice" selected>orice</option>
+                <% for (let comp of locals.componente) { %>
+                    <option value="<%- comp %>"><%- comp.charAt(0).toUpperCase() + comp.slice(1) %></option>
+                <% } %>
+            </select>
+        </div>
+
+        <div class="col-12 mb-3">
+            <div class="form-check form-switch col-auto mb-2">
+                <input class="form-check-input" type="checkbox" role="switch" id="theme-switcher">
+                <label class="form-check-label" for="theme-switcher">
+                    <i id="theme-icon" class="bi bi-sun"></i>
+                </label>
+            </div>
+            <button id="filtrare" class="btn btn-primary me-2" title="Filtrează">
+                <i class="bi bi-funnel"></i> Filtrează
+            </button>
+            <button id="resetare" class="btn btn-primary" title="Resetează">
+                <i class="bi bi-rewind-circle"></i> Resetează
+            </button>
+        </div>
+
+        <div class="col-12">
+            <button id="sortCrescNume" class="btn btn-secondary me-2">
+                <i class="bi bi-sort-down-alt"></i> Sortează crescător după preț și nume
+            </button>
+            <button id="sortDescrescNume" class="btn btn-secondary">
+                <i class="bi bi-sort-down"></i> Sortează descrescător după preț și nume
+            </button>
+        </div>
+
+        <div class="col-12">
+            <p id="p-suma">Apăsați Alt+"c" pentru suma prețurilor produselor afișate.</p>
+        </div>
+    </div>
+
+
+    <section id="produse" class="mt-5">
+        <h2>Jocuri disponibile</h2>
+        <div class="grid-produse">
+            <% for (let prod of locals.produse) { %>
+                <article class="produs">
+                    <h3 class="nume">Nume: <a href="/produs/<%- prod.id %>"><span class="val-nume"><%- prod.nume %></span></a></h3>
+                    <figure>
+                        <a href="/produs/<%- prod.id %>"><img src="/resurse/imagini/produse/<%- prod.imagine %>" style="width:50%;height:auto;" alt="[imagine <%- prod.nume %>]"/></a>
+                    </figure>
+                    <div class="info-prod">
+                        <p class="pret">Preț: <span class="val-pret"><%- prod.pret %></span> lei</p>
+                        <p class="varsta">Vârstă minimă: <span class="val-varsta"><%- prod.varsta_min %></span></p>
+                        <p class="jucatori">Max. jucatori: <span class="val-jucatori"><%- prod.jucatori_max %></span></p>
+                        <p class="tip">Tip produs: <span class="val-tip"><%- prod.tip_produs %></span></p>
+                    </div>
+                    <p class="categorie">Categorie: <span class="val-categorie"><%- prod.categorie %></span></p>
+                    <p class="baza">Este de bază: <span class="val-baza"><%- prod.de_baza ? 'Da' : 'Extensie' %></span></p>
+                    <div class="val-componente" style="display:none;"><%= prod.componente.join(", ") %></div>
+                    <label class="selecteaza-cos">
+                        Selectează:<br/>
+                        <input type="checkbox" class="select-cos" value="<%- prod.id %>" autocomplete="off">
+                    </label>
+                </article>
+            <% } %>
+        </div>
+    </section>
+</main>
+
+<%- include("../fragmente/footer") %>
+</body>
+</html>

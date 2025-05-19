@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta name="description" content="Detalii despre jocul de societate selectat: <%- locals.prod.nume %>.">
+    <meta name="keywords" content="jocuri, societate, board game, <%- locals.prod.nume %>, <%- locals.prod.tip_produs %>, <%- locals.prod.categorie %>">
+    <title>Press Start - <%- locals.prod.nume %></title>
+    <%- include("../fragmente/head") %>
+    <link href="/resurse/css/produs.css" type="text/css" rel="stylesheet" />
+</head>
+<body>
+<%- include("../fragmente/header.ejs") %>
+
+<main>
+    <section class = grid-produse>
+        <h1 class="nume"><%- locals.prod.nume %></h1>
+        <article id="art-produs">
+            <div class="col-stanga">
+                <section class="desc-prod">
+                    <figure class="imag-produs">
+                        <img src="/resurse/imagini/produse/<%- locals.prod.imagine %>" alt="[imagine <%- locals.prod.nume %>]" />
+                    </figure>
+                    <p><strong>Vârstă minimă:</strong> <span class="varsta_min"><%- locals.prod.varsta_min %> ani</span></p>
+                    <p><strong>Tip produs:</strong> <span class="tip_produs"><%- locals.prod.tip_produs %></span></p>
+                    <p><strong>Descriere:</strong> <span class="descriere"><%- locals.prod.descriere %></span></p>
+                    <%
+                    const luni = ["Ianuarie", "Februarie", "Martie", "Aprilie", "Mai", "Iunie",
+                        "Iulie", "August", "Septembrie", "Octombrie", "Noiembrie", "Decembrie"];
+                    const zile = ["Duminică", "Luni", "Marți", "Miercuri", "Joi", "Vineri", "Sâmbătă"];
+
+                    const data = new Date(locals.prod.data_aparitie);
+                    const zi = data.getDate();
+                    const luna = luni[data.getMonth()];
+                    const an = data.getFullYear();
+                    const ziSaptamana = zile[data.getDay()];
+                    const iso = data.toISOString().split("T")[0];
+                    %>
+                    <p><strong>Data aparitie:</strong>
+                        <time datetime="<%= iso %>"><%= zi %> <%= luna %> <%= an %> [<%= ziSaptamana %>]</time>
+                    </p>
+                    <p><strong>Este joc de bază:</strong> <span class="de_baza"><%- locals.prod.de_baza ? "Da" : "Extensie" %></span></p>
+                </section>
+            </div>
+
+            <div class="col-dreapta">
+                <p><strong>Preț:</strong> <span class="pret"><%- locals.prod.pret %> lei</span></p>
+                <p><strong>Număr maxim jucători:</strong> <span class="jucatori_max"><%- locals.prod.jucatori_max %></span></p>
+                <p><strong>Categorie:</strong> <span class="categorie"><%- locals.prod.categorie %></span></p>
+                <p><strong>Componente:</strong> <span class="componente"><%- locals.prod.componente ? locals.prod.componente.join(", ") : "Nespecificat" %></span></p>
+            </div>
+        </article>
+    </section>
+</main>
+
+<%- include("../fragmente/footer") %>
+</body>
+</html>

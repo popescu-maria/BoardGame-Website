@@ -4,10 +4,18 @@ const fs = require("fs");
 const sharp = require("sharp");
 const sass = require("sass");
 const pg = require("pg");
+const accesBD=require("./module_proprii/accesbd.js");
+
+// la fiecare query
+accesBD.getInstanta().select({tabel: "jocuri", campuri:["*"]}, function(err, rez){
+    console.log("----------------------access DB------------------------------------")
+    console.log(err)
+    console.log(rez)
+})
 
 const Client=pg.Client;
 
-client = new Client({
+const client = new Client({
     database:"proiect",
     user:"maria",
     password:"maria",
@@ -17,11 +25,12 @@ client = new Client({
 
 client.connect()
 
-client.query("select * from prajituri", function(err, rezultat ){
+client.query("select * from jocuri", function(err, rezultat ){
     console.log(err)
     console.log(rezultat)
 })
-client.query("select * from unnest(enum_range(null::categ_prajitura))", function(err, rezultat ){
+
+client.query("select * from unnest(enum_range(null::categorie_joc))", function(err, rezultat ){
     console.log(err)
     console.log(rezultat)
 })
@@ -36,7 +45,13 @@ obGlobal = {
     folderScss: path.join(__dirname, "resurse/scss"),
     folderCss: path.join(__dirname, "resurse/css"),
     folderBackup : path.join(__dirname, "backup"),
+    optiuniMeniu : null,
 };
+
+client.query("select * from unnest(enum_range(null::tipuri_produse))", function(err, rezultat){
+    console.log(err)
+    obGlobal.optiuniMeniu = rezultat.rows;
+})
 
 vect_foldere=["temp", "backup", "temp1"];
 for(let folder of vect_foldere) {
@@ -159,9 +174,11 @@ function afisareEroare(res, identificator, titlu, text, imagine) {
     res.render("pagini/eroare", { titlu, text, imagine });
 }
 
-// console.log("Folderul proiectului: ", __dirname);
-// console.log("Cale fisier index.js: ", __filename);
-// console.log("Folderul de lucru: ", process.cwd());
+
+app.use("/*", function (req, res, next) {
+    res.locals.optiuniMeniu = obGlobal.optiuniMeniu;
+    next();
+})
 
 app.use("/resurse", express.static(path.join(__dirname, 'resurse')));
 app.use("/node_modules", express.static(path.join(__dirname, 'node_modules')));
@@ -200,25 +217,60 @@ app.get("/abc", (req, res) => {
 
 app.get("/produse", function(req, res){
     console.log(req.query)
-    var conditieQuery=""; // TO DO where din parametri
+    var conditieQuery = ""; // TO DO: where din parametri
+    if (req.query.tip) {
+        conditieQuery = ` WHERE tip_produs = '${req.query.tip}'`;
+    }
 
+    const queryCategorii = "SELECT * FROM unnest(enum_range(null::categorie_joc))";
+    const queryProduse = "SELECT * FROM jocuri" + conditieQuery;
+    const queryComponente = "SELECT DISTINCT unnest(componente) AS comp FROM jocuri ORDER BY comp";
 
-    queryOptiuni="select * from unnest(enum_range(null::categ_prajitura))"
-    client.query(queryOptiuni, function(err, rezOptiuni){
-        console.log(rezOptiuni)
+    client.query(queryCategorii, function(err, rezCategorii){
+        if (err) {
+            console.log(err);
+            return afisareEroare(res, 2);
+        }
 
-
-        queryProduse="select * from prajituri"
-        client.query(queryProduse, function(err, rez){
-            if (err){
+        client.query(queryProduse, function(err, rezProduse){
+            if (err) {
                 console.log(err);
-                afisareEroare(res, 2);
+                return afisareEroare(res, 2);
+            }
+
+            client.query(queryComponente, function(err, rezComponente){
+                if (err) {
+                    console.log(err);
+                    return afisareEroare(res, 2);
+                }
+
+                const componente = rezComponente.rows.map(row => row.comp);
+
+                res.render("pagini/produse", {
+                    produse: rezProduse.rows,
+                    optiuni: rezCategorii.rows,
+                    componente: componente
+                });
+            });
+        });
+    });
+});
+
+app.get("/produs/:id", function(req, res){
+    client.query(`select * from jocuri where id = ${req.params.id}`, function(err, rez){
+        if (err){
+            console.log(err);
+            afisareEroare(res, 2);
+        }
+        else{
+            if (rez.rowCount==0){
+                afisareEroare(res, 404);
             }
             else{
-                res.render("pagini/produse", {produse: rez.rows, optiuni:rezOptiuni.rows})
+                res.render("pagini/produs", {prod: rez.rows[0]})
             }
-        })
-    });
+        }
+    })
 })
 
 app.get(/^\/resurse\/[a-zA-Z0-9_\/]*$/, function (req, res, next) {
@@ -231,7 +283,7 @@ app.get("/*.ejs", function (req, res, next) {
 
 app.get("/*", (req, res) => {
     try {
-        res.render("pagini" + req.url, (err, rezultatRandare) => {
+        res.render(path.join("pagini", req.url), (err, rezultatRandare) => {
             if (err) {
                 if (err.message.startsWith("Failed to lookup view")) {
                     afisareEroare(res, 404);

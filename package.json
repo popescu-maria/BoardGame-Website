@@ -28,6 +28,7 @@
   "homepage": "https://github.com/popescu-maria/BoardGame-Website#readme",
   "dependencies": {
     "bootstrap": "^5.3.5",
+    "bootstrap-icons": "^1.13.1",
     "ejs": "^3.1.10",
     "express": "^4.21.2",
     "pg": "^8.14.1",
