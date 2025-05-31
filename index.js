@@ -418,6 +418,12 @@ app.get("/produs/:id", async function(req, res) {
 
         const prod = produsResult.rows[0];
 
+        const produseSimilareResult = await client.query(
+            `SELECT * FROM jocuri WHERE categorie = $1 AND id != $2 LIMIT 4`,
+            [prod.categorie, prodId]
+        );
+        const similarProducts = produseSimilareResult.rows;
+
         const setsResult = await client.query(`
             SELECT 
                 s.id, s.nume_set, s.descriere_set,
@@ -454,6 +460,7 @@ app.get("/produs/:id", async function(req, res) {
 
         res.render("pagini/produs", {
             prod: prod,
+            similarProducts: similarProducts,
             setsOfProduct: sets,
         });
     } catch (err) {
