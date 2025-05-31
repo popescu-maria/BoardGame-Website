@@ -1,16 +1,21 @@
 window.onload = function () {
 
-    //min si max la range button
     let range = document.getElementById("inp-pret");
+    let container = range.parentNode;
+
     let spanMin = document.createElement("span");
     spanMin.id = "val-min";
     spanMin.innerText = `${range.min} lei`;
+    container.insertBefore(spanMin, range);
+
     let spanMax = document.createElement("span");
     spanMax.id = "val-max";
     spanMax.innerText = `${range.max} lei`;
-    let container = range.parentNode;
-    container.insertBefore(spanMin, range);
     container.insertBefore(spanMax, range.nextSibling);
+
+    let noProductsMessage = document.getElementById("no-products-message");
+
+    document.getElementById("infoRange").innerText = `(${range.value})`;
 
     function levenshteinDistance(a, b) {
         const dp = Array.from({ length: a.length + 1 }, () =>
@@ -36,7 +41,7 @@ window.onload = function () {
         return dp[a.length][b.length];
     }
 
-    document.getElementById("filtrare").onclick = function () {
+    function filtreazaProduse() {
         let inpNume = document.getElementById("inp-nume").value.trim().toLowerCase();
 
         if (inpNume !== "" && !/^[a-z0-9 :]+$/i.test(inpNume)) {
@@ -66,6 +71,8 @@ window.onload = function () {
         let inpCategorie = document.getElementById("inp-categorie").value.trim().toLowerCase();
 
         let produse = document.getElementsByClassName("produs");
+        let productsDisplayedCount = 0;
+
         for (let prod of produse) {
             let nume = prod.getElementsByClassName("val-nume")[0].innerText.trim().toLowerCase();
             let varsta = parseInt(prod.getElementsByClassName("val-varsta")[0].innerText.trim());
@@ -83,23 +90,50 @@ window.onload = function () {
             let cond6 = componenteSelectate.includes("orice") ||
                 componenteSelectate.every(comp => componenteProdus.includes(comp));
 
-            prod.style.display = (cond1 && cond2 && cond3 && cond4 && cond5 && cond6) ? "block" : "none";
-        }
-    };
+            let shouldDisplay = (cond1 && cond2 && cond3 && cond4 && cond5 && cond6);
 
-    document.getElementById("inp-pret").onchange = function () {
+            if (shouldDisplay) {
+                prod.style.display = "block";
+                productsDisplayedCount++;
+            } else {
+                prod.style.display = "none";
+            }
+        }
+        if (productsDisplayedCount === 0) {
+            noProductsMessage.style.display = "block";
+        } else {
+            noProductsMessage.style.display = "none";
+            document.querySelector(".grid-produse").style.justifyContent = "start";
+        }
+    }
+
+    document.getElementById("inp-nume").addEventListener("input", filtreazaProduse);
+    document.getElementById("inp-varsta").addEventListener("input", filtreazaProduse);
+    document.getElementById("inp-pret").addEventListener("input", function () {
         document.getElementById("infoRange").innerText = `(${this.value})`;
-    };
+        filtreazaProduse();
+    });
+    document.getElementById("inp-categorie").addEventListener("change", filtreazaProduse);
+    document.getElementById("inp-componente").addEventListener("change", filtreazaProduse);
+
+    let vectRadio = document.getElementsByName("options");
+    vectRadio.forEach
+        ? vectRadio.forEach(radio => radio.addEventListener("change", filtreazaProduse))
+        : Array.from(vectRadio).forEach(radio => radio.addEventListener("change", filtreazaProduse));
+
+    document.getElementById("filtrare").onclick = filtreazaProduse;
 
     document.getElementById("resetare").onclick = function () {
         if (!confirm("Ești sigur că vrei să resetezi toate filtrele?")) {
             return;
         }
 
+        let range = document.getElementById("inp-pret");
+
         document.getElementById("inp-nume").value = "";
         document.getElementById("inp-varsta").value = 0;
-        document.getElementById("inp-pret").value = 0;
-        document.getElementById("infoRange").innerText = "(0)";
+        document.getElementById("inp-pret").value = range.min;
+        document.getElementById("infoRange").innerText = `(${range.min})`;
         document.getElementById("inp-categorie").value = "toate";
         document.getElementById("i_rad4").checked = true;
 
@@ -107,11 +141,16 @@ window.onload = function () {
         for (let opt of selComponente.options) {
             opt.selected = false;
         }
+        const oriceOption = Array.from(selComponente.options).find(opt => opt.value === "orice");
+        if (oriceOption) {
+            oriceOption.selected = true;
+        }
 
         let produse = document.getElementsByClassName("produs");
         for (let prod of produse) {
             prod.style.display = "block";
         }
+        noProductsMessage.style.display = "none";
     };
 
     document.getElementById("sortCrescNume").onclick = function () {
@@ -120,7 +159,6 @@ window.onload = function () {
     document.getElementById("sortDescrescNume").onclick = function () {
         sorteaza(-1);
     };
-
 
     function sorteaza(semn) {
         let produse = document.getElementsByClassName("produs");

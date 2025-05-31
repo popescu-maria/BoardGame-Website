@@ -225,6 +225,8 @@ app.get("/produse", function(req, res){
     const queryCategorii = "SELECT * FROM unnest(enum_range(null::categorie_joc))";
     const queryProduse = "SELECT * FROM jocuri" + conditieQuery;
     const queryComponente = "SELECT DISTINCT unnest(componente) AS comp FROM jocuri ORDER BY comp";
+    const queryMinMaxPret = "SELECT MIN(pret) AS min_pret, MAX(pret) AS max_pret FROM jocuri";
+    const queryMaxVarsta = "SELECT MAX(varsta_min) as max_varsta_min FROM jocuri";
 
     client.query(queryCategorii, function(err, rezCategorii){
         if (err) {
@@ -246,10 +248,29 @@ app.get("/produse", function(req, res){
 
                 const componente = rezComponente.rows.map(row => row.comp);
 
+                client.query(queryMinMaxPret, function(err, rezMinMaxPret){
+                    if (err) {
+                        console.log(err);
+                        return afisareEroare(res, 2);
+                    }
+                    const { min_pret, max_pret } = rezMinMaxPret.rows[0];
+
+                client.query(queryMaxVarsta, function(err, rezMaxVarsta){
+                   if (err) {
+                       console.log(err);
+                       return;
+                   }
+                        const maxVarstaMin = rezMaxVarsta.rows[0].max_varsta_min;
+
                 res.render("pagini/produse", {
                     produse: rezProduse.rows,
                     optiuni: rezCategorii.rows,
-                    componente: componente
+                    componente: componente,
+                    minPretDB: parseFloat(min_pret).toFixed(2),
+                    maxPretDB: parseFloat(max_pret).toFixed(2),
+                    maxVarstaDB: maxVarstaMin
+                        });
+                    });
                 });
             });
         });
