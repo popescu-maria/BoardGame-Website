@@ -1,4 +1,4 @@
-<!--Bonusurile 1 (5 inputuri), 3, 4 (6 inputuri)-->
+<!--Bonusurile 1 (5 inputuri), 3, 4 (6 inputuri), 12 a) b) c) d), 17-->
 
 
 <!DOCTYPE html>
@@ -16,6 +16,15 @@
 <%- include("../fragmente/header") %>
 
 <main class="container py-4">
+    <% if (locals.currentOffer) { %>
+        <div id="latest-offer-banner" class="mb-4 p-3 text-center">
+            <h3>🎉 Ofertă Specială! 🎉</h3>
+            <p class="mb-0">Toate produsele din categoria <span id="oferta-categorie"><%- locals.currentOffer.categorie %></span> au reducere de <span id="oferta-reducere"><%- locals.currentOffer.reducere %></span>%!</p>
+            <p class="text-muted small">
+                <span id="oferta-countdown" data-end-time="<%= locals.currentOffer['data-finalizare'] %>"></span>
+            </p>
+        </div>
+    <% } %>
     <div class="row g-3">
 
         <div class="col-lg-8">
@@ -78,21 +87,6 @@
             </div>
         </div>
 
-<!--        <div class="col-md-8">-->
-<!--            <label class="form-label d-block">Tip joc:</label>-->
-<!--            <div class="btn-group btn-group-toggle" data-toggle="buttons">-->
-<!--                <label class="btn btn-outline-primary active">-->
-<!--                    Toate <input id="opt-de-baza-all" name="options-de-baza" value="all" type="radio" autocomplete="off" checked>-->
-<!--                </label>-->
-<!--                <label class="btn btn-outline-primary">-->
-<!--                    De bază <input id="opt-de-baza-true" name="options-de-baza" value="true" type="radio" autocomplete="off">-->
-<!--                </label>-->
-<!--                <label class="btn btn-outline-primary">-->
-<!--                    Extensie <input id="opt-de-baza-false" name="options-de-baza" value="false" type="radio" autocomplete="off">-->
-<!--                </label>-->
-<!--            </div>-->
-<!--        </div>-->
-
         <div class="col-lg-4">
             <label for="inp-componente" class="form-label">Componente:</label>
             <select id="inp-componente" name="componente" multiple size="9" class="form-select">
@@ -141,9 +135,22 @@
                     <h3 class="nume">Nume: <a href="/produs/<%- prod.id %>"><span class="val-nume"><%- prod.nume %></span></a></h3>
                     <figure>
                         <a href="/produs/<%- prod.id %>"><img src="/resurse/imagini/produse/<%- prod.imagine %>" style="width:50%;height:auto;" alt="[imagine <%- prod.nume %>]"/></a>
+                        <% if (prod.is_cheapest_in_category) { %>
+                            <div class="cheapest-badge-wrapper">
+                                <span class="cheapest-badge" title="Cel mai mic preț din categorie!">Cel mai ieftin!</span>
+                            </div>
+                        <% } %>
                     </figure>
                     <div class="info-prod">
-                        <p class="pret">Preț: <span class="val-pret"><%- prod.pret %></span> lei</p>
+                        <p class="pret">Preț:
+                            <% if (prod.is_on_sale) { %>
+                                <span class="original-price"><s style="text-decoration: line-through;"><%- prod.original_pret %> lei</s></span>
+                                <span class="discounted-price"><%- prod.pret %> lei</span>
+                                <span class="discount-badge">(-<%- prod.discount_percentage %>%)</span>
+                            <% } else { %>
+                                <span class="val-pret"><%- prod.pret %> lei</span>
+                            <% } %>
+                        </p>
                         <p class="varsta">Vârstă minimă: <span class="val-varsta"><%- prod.varsta_min %></span></p>
                         <p class="jucatori">Max. jucatori: <span class="val-jucatori"><%- prod.jucatori_max %></span></p>
                         <p class="tip">Tip produs: <span class="val-tip"><%- prod.tip_produs %></span></p>

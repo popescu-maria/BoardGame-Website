@@ -1,0 +1,142 @@
+
+.seturi-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.set-card {
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    padding: 20px;
+    background-color: var(--culoare-neutra);
+    display: flex;
+    flex-direction: column;
+}
+
+.set-card h3 {
+    color: #333;
+    font-size: 1.8em;
+    margin-top: 0;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.set-card .set-description {
+    color: var(--culoare-text);
+    font-size: 1em;
+    margin-bottom: 20px;
+    flex-grow: 1;
+}
+
+.set-card h4 {
+    color: var(--culoare-background);
+    font-size: 1.2em;
+    margin-top: 15px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 5px;
+}
+
+.set-products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.produs-in-set {
+    text-align: center;
+    padding: 10px;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    background-color: var(--culoare-deschisa);
+    transition: transform 0.2s ease-in-out;
+}
+
+.produs-in-set:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+.produs-in-set a {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+.produs-in-set img {
+    max-width: 100%;
+    height: 100px;
+    object-fit: contain;
+    margin-bottom: 5px;
+    border-radius: 4px;
+}
+
+.produs-in-set .produs-nume {
+    font-size: 0.9em;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 5px;
+    min-height: 2.4em;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.produs-in-set .pret {
+    font-size: 0.8em;
+    color: #e44d26;
+    font-weight: bold;
+}
+
+.set-prices {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8em;
+    flex-wrap: wrap;
+}
+
+.set-prices .original-price {
+    text-decoration: line-through;
+    color: var(--culoare-text);
+    margin-right: 10px;
+    font-size: 1em;
+}
+
+.set-prices .discount-percentage {
+    color: var(--culoare-baza);
+    font-weight: bold;
+    margin-right: 10px;
+    font-size: 0.9em;
+}
+
+.set-prices .pret {
+    color: #4CAF50;
+    font-weight: bold;
+    font-size: 1.3em;
+}
+
+.set-summary {
+    text-align: center;
+    color: var(--culoare-text);
+    font-size: 0.9em;
+    margin-bottom: 10px;
+}
+
+@media (max-width: 768px) {
+    .seturi-container {
+        grid-template-columns: 1fr;
+        padding: 15px;
+    }
+    .set-products-grid {
+        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    }
+}

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= typeof titlu !== 'undefined' ? titlu : 'Seturi de Produse' %></title>
+    <link rel="stylesheet" href="/resurse/css/produse.css">
+    <link rel="stylesheet" href="/resurse/css/seturi.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <%- include("../fragmente/head") %>
+    <% if(locals.sezon){%>
+        <link rel="stylesheet" href="/resurse/css/<%= locals.sezon %>.css" type="text/css" />
+    <%}%>
+</head>
+<body>
+<%- include("../fragmente/header") %>
+
+<main>
+    <h2><%= typeof titlu !== 'undefined' ? titlu : 'Seturi Disponibile' %></h2>
+
+    <% if (sets && sets.length > 0) { %>
+        <div class="seturi-container">
+            <% sets.forEach(set => { %>
+                <div class="set-card">
+                    <h3><%= set.nume_set %></h3>
+                    <p class="set-description"><%= set.descriere_set %></p>
+
+                    <% /* START: Price display added here */ %>
+                    <% if (set.numar_produse > 0) { %>
+                        <p class="set-summary">
+                            (<%= set.numar_produse %> produse)
+                        </p>
+                        <div class="set-prices">
+                            <span class="original-price"><%= set.total_pret_initial %> LEI</span>
+                            <span class="discount-percentage">-<%= set.reducere_set %>%</span>
+                            <span class="pret"><%= set.pret_final_set %> LEI</span>
+                        </div>
+                    <% } else { %>
+                        <p class="set-summary">Acest set nu conține încă produse.</p>
+                    <% } %>
+                    <% /* END: Price display added here */ %>
+
+                    <h4>Produse incluse:</h4>
+                    <% if (set.produse && set.produse.length > 0) { %>
+                        <div class="set-products-grid">
+                            <% set.produse.forEach(prod => { %>
+                                <div class="produs-in-set">
+                                    <a href="/produs/<%= prod.produs_id %>">
+                                        <img src="/resurse/imagini/produse/<%= prod.produs_imagine %>" alt="<%= prod.produs_nume %>">
+                                        <p class="produs-nume"><%= prod.produs_nume %></p>
+                                    </a>
+                                    <p class="pret"><%= parseFloat(prod.produs_pret).toFixed(2) %> LEI</p>
+                                </div>
+                            <% }) %>
+                        </div>
+                    <% } else { %>
+                        <p>Acest set nu conține încă produse.</p>
+                    <% } %>
+                </div>
+            <% }) %>
+        </div>
+    <% } else { %>
+        <p>Nu există seturi de produse disponibile în acest moment.</p>
+    <% } %>
+</main>
+
+<%- include("../fragmente/footer") %>
+</body>
+</html>

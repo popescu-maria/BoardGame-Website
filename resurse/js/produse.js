@@ -15,6 +15,8 @@ window.onload = function () {
 
     let noProductsMessage = document.getElementById("no-products-message");
 
+    let offerCountdownInterval = null;
+
     document.getElementById("infoRange").innerText = `(${range.value})`;
 
     function levenshteinDistance(a, b) {
@@ -40,6 +42,59 @@ window.onload = function () {
         }
         return dp[a.length][b.length];
     }
+
+    const offerBanner = document.getElementById('latest-offer-banner');
+    const offerCountdownElement = document.getElementById('oferta-countdown');
+
+    function startOfferCountdown() {
+        if (!offerCountdownElement || !offerBanner) {
+            return;
+        }
+
+        const endTimeStr = offerCountdownElement.dataset.endTime;
+        if (!endTimeStr) {
+            offerBanner.style.display = 'none';
+            return;
+        }
+
+        const endTime = new Date(endTimeStr).getTime();
+
+        if (offerCountdownInterval) {
+            clearInterval(offerCountdownInterval);
+        }
+
+        offerCountdownInterval = setInterval(function() {
+            const now = new Date().getTime();
+            const distance = endTime - now;
+
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            if (distance < 0) {
+                clearInterval(offerCountdownInterval);
+                offerCountdownElement.innerText = "Oferta a expirat!";
+                offerBanner.classList.add('expired-offer');
+                setTimeout(() => {
+                    location.reload();
+                }, 1000);
+            } else {
+                let countdownText = `Oferta expiră în: `;
+                if (hours > 0) {
+                    countdownText += `${hours}h `;
+                }
+                countdownText += `${minutes}m ${seconds}s`;
+                offerCountdownElement.innerText = countdownText;
+
+                if (distance < 10000) { // 10 seconds
+                    offerCountdownElement.classList.add('urgent-countdown');
+                } else {
+                    offerCountdownElement.classList.remove('urgent-countdown');
+                }
+            }
+        }, 1000);
+    }
+    startOfferCountdown();
 
     function filtreazaProduse() {
         let inpNume = document.getElementById("inp-nume").value.trim().toLowerCase();
@@ -77,8 +132,8 @@ window.onload = function () {
             let nume = prod.getElementsByClassName("val-nume")[0].innerText.trim().toLowerCase();
             let varsta = parseInt(prod.getElementsByClassName("val-varsta")[0].innerText.trim());
             let jucatori = parseInt(prod.getElementsByClassName("val-jucatori")[0].innerText.trim());
-            let pret = parseFloat(prod.getElementsByClassName("val-pret")[0].innerText.trim());
-            let categorie = prod.getElementsByClassName("val-categorie")[0].innerText.trim().toLowerCase();
+            let pretElement = prod.querySelector(".discounted-price") || prod.querySelector(".val-pret");
+            let pret = parseFloat(pretElement.innerText.trim());            let categorie = prod.getElementsByClassName("val-categorie")[0].innerText.trim().toLowerCase();
             let componenteProdus = prod.getElementsByClassName("val-componente")[0]
                 .innerText.trim().toLowerCase().split(/\s*,\s*/);
 

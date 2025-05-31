@@ -15,14 +15,6 @@
                     </a>
                 </li>
                 <li>
-                    <div class="text-icon" id="jocuri">Jocuri</div>
-                    <ul>
-                        <li><a href="#strategie">Jocuri de strategie</a></li>
-                        <li><a href="#petrecere">Jocuri de petrecere</a></li>
-                        <li><a href="#cooperative">Jocuri cooperative</a></li>
-                    </ul>
-                </li>
-                <li>
                     <div>Despre</div>
                     <ul>
                         <li><a href="despre#prezentare">Prezentare</a></li>
@@ -38,6 +30,7 @@
                         <% for (let opt of locals.optiuniMeniu){ %>
                             <li><a href="/produse?tip=<%= opt.unnest %>"><%= opt.unnest %></a></li>
                         <% } %>
+                        <li><a href="/seturi">Seturi</a></li>
                     </ul>
                 </li>
                 <li>

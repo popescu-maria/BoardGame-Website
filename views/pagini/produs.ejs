@@ -6,12 +6,13 @@
     <title>Press Start - <%- locals.prod.nume %></title>
     <%- include("../fragmente/head") %>
     <link href="/resurse/css/produs.css" type="text/css" rel="stylesheet" />
+    <link href="/resurse/css/produse.css" type="text/css" rel="stylesheet" />
+
 </head>
 <body>
 <%- include("../fragmente/header.ejs") %>
 
-<main>
-    <section class = grid-produse>
+<main class="container py-4"> <section class="grid-produse">
         <h1 class="nume"><%- locals.prod.nume %></h1>
         <article id="art-produs">
             <div class="col-stanga">
@@ -19,6 +20,15 @@
                     <figure class="imag-produs">
                         <img src="/resurse/imagini/produse/<%- locals.prod.imagine %>" alt="[imagine <%- locals.prod.nume %>]" />
                     </figure>
+                    <p><strong>Preț:</strong>
+                        <% if (locals.prod.is_on_sale) { %>
+                            <span class="original-price"><s style="text-decoration: line-through;"><%- locals.prod.original_pret %> lei</s></span>
+                            <span class="discounted-price"><%- locals.prod.pret %> lei</span>
+                            <span class="discount-badge">(-<%- locals.prod.discount_percentage %>%)</span>
+                        <% } else { %>
+                            <span class="val-pret"><%- locals.prod.pret %> lei</span>
+                        <% } %>
+                    </p>
                     <p><strong>Vârstă minimă:</strong> <span class="varsta_min"><%- locals.prod.varsta_min %> ani</span></p>
                     <p><strong>Tip produs:</strong> <span class="tip_produs"><%- locals.prod.tip_produs %></span></p>
                     <p><strong>Descriere:</strong> <span class="descriere"><%- locals.prod.descriere %></span></p>
@@ -38,16 +48,63 @@
                         <time datetime="<%= iso %>"><%= zi %> <%= luna %> <%= an %> [<%= ziSaptamana %>]</time>
                     </p>
                     <p><strong>Este joc de bază:</strong> <span class="de_baza"><%- locals.prod.de_baza ? "Da" : "Extensie" %></span></p>
+                    <% if (typeof setsOfProduct !== 'undefined' && setsOfProduct.length > 0) { %>
+                        <section class="sectiune-seturi">
+                            <h3>Face parte din seturile:</h3>
+                            <ul class="lista-seturi-produse">
+                                <% setsOfProduct.forEach(set => { %>
+                                    <li>
+                                        <a href="/seturi#set-<%= set.id %>"><strong><%= set.nume_set %></strong></a>
+                                        <span class="pret-in-set">Prețul acestui produs în set: <%= set.pret_produs_in_set %> lei</span>
+                                        <span class="pret-set">(Preț set: <%= set.pret_final_set %> lei / <%= set.numar_produse %> produse, reducere set: <%= set.reducere_set %>%)</span>
+                                    </li>
+                                <% }) %>
+                            </ul>
+                        </section>
+                    <% } %>
                 </section>
             </div>
 
             <div class="col-dreapta">
-                <p><strong>Preț:</strong> <span class="pret"><%- locals.prod.pret %> lei</span></p>
                 <p><strong>Număr maxim jucători:</strong> <span class="jucatori_max"><%- locals.prod.jucatori_max %></span></p>
                 <p><strong>Categorie:</strong> <span class="categorie"><%- locals.prod.categorie %></span></p>
                 <p><strong>Componente:</strong> <span class="componente"><%- locals.prod.componente ? locals.prod.componente.join(", ") : "Nespecificat" %></span></p>
             </div>
         </article>
+
+        <% if (locals.similarProducts && locals.similarProducts.length > 0) { %>
+            <section id="produse-similare" class="mt-5">
+                <h2>Produse Similare în Categoria "<%- locals.prod.categorie %>"</h2>
+                <div class="grid-produse-similare">
+                    <% for (let similarProd of locals.similarProducts) { %>
+                        <article class="produs-similar">
+                            <h4 class="nume">
+                                <a href="/produs/<%- similarProd.id %>"><%- similarProd.nume %></a>
+                            </h4>
+                            <figure class="imag-produs-similar">
+                                <a href="/produs/<%- similarProd.id %>">
+                                    <img src="/resurse/imagini/produse/<%- similarProd.imagine %>" alt="[imagine <%- similarProd.nume %>]" />
+                                </a>
+                            </figure>
+                            <div class="info-prod-similar">
+                                <p class="pret">Preț:
+                                    <% if (similarProd.is_on_sale) { %>
+                                        <span class="original-price"><s style="text-decoration: line-through;"><%- similarProd.original_pret %> lei</s></span>
+                                        <span class="discounted-price"><%- similarProd.pret %> lei</span>
+                                        <span class="discount-badge">(-<%- similarProd.discount_percentage %>%)</span>
+                                    <% } else { %>
+                                        <span class="val-pret"><%- similarProd.pret %> lei</span>
+                                    <% } %>
+                                </p>
+                                <p>Vârstă: <span class="varsta_min"><%- similarProd.varsta_min %>+</span></p>
+                                <p>Max jucători: <span class="jucatori_max"><%- similarProd.jucatori_max %></span></p>
+                                <p>Tip: <span class="tip_produs"><%- similarProd.tip_produs %></span></p>
+                            </div>
+                        </article>
+                    <% } %>
+                </div>
+            </section>
+        <% } %>
     </section>
 </main>
 
