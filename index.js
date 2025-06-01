@@ -264,6 +264,16 @@ app.get(["/", "/index", "/home"], (req, res) => {
     res.render("pagini/index", { ip: req.ip, imagini: imaginiFiltrate });
 });
 
+app.get("/galerie", (req, res) => {
+    const sezonCurent = getSeason();
+    const imaginiFiltrate = obGlobal.obImagini.imagini.filter(imag => imag.anotimp && imag.anotimp.includes(sezonCurent));
+
+    res.render("pagini/galerie", {
+        imagini: imaginiFiltrate,
+        titlu: "Galerie"
+    });
+});
+
 app.get("/index/a", (req, res) => {
     res.render("pagini/index");
 });

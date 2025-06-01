@@ -4,6 +4,9 @@ html{
 
 body{
     background-color:var(--culoare-deschisa);
+    color: var(--culoare-text);
+    transition: background-color 0.3s ease, color 0.3s ease;
+
     --spatiere-pagina:40px;
     --culoare-deschisa: #FADACB;
     --culoare-neutra: #A07973;
@@ -13,23 +16,21 @@ body{
     --culoare-highlight:#CC362B;
     --culoare-border:#7B4441;
     --culoare-link: var(--culoare-highlight);
-    body.dark {
-        background-color: #26070C;
-        --spatiere-pagina:40px;
-
-        --culoare-deschisa: #26070C;
-        --culoare-neutra: #5a1f1f;
-        --culoare-baza: #C94C4C;
-        --culoare-background: #3c0f0f;
-        --culoare-text: #C94C4C;
-        --culoare-highlight: #B34A66;
-        --culoare-border: #5a1f1f;
-        --culoare-link: #B34A66;
-    }
 }
 
+
 body.dark {
-/*    schimb culorile*/
+    background-color: #26070C;
+    --spatiere-pagina:40px;
+
+    --culoare-deschisa: #26070C;
+    --culoare-neutra: #5a1f1f;
+    --culoare-baza: #C94C4C;
+    --culoare-background: #3c0f0f;
+    --culoare-text: #C94C4C;
+    --culoare-highlight: #B34A66;
+    --culoare-border: #5a1f1f;
+    --culoare-link: #B34A66;
 }
 
 h1{
@@ -39,10 +40,12 @@ h1{
 
 h2{
     font-size: 1.6rem;
+    color: var(--culoare-text);
 }
 
 h3{
     font-size: 1.3rem;
+    color: var(--culoare-text);
 }
 
 #grid-pagina {

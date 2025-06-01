@@ -4,7 +4,7 @@
 		{
 			"fisier": "Avalon.png",
 			"descriere": "Avalon",
-			"anotimp": ["primavara", "iarna"]
+			"anotimp": ["primavara", "vara"]
 		},
 		{
 			"fisier": "Cascadia.png",
@@ -19,32 +19,32 @@
 		{
 			"fisier": "Pandemic.png",
 			"descriere": "Pandemic",
-			"anotimp": ["primavara","iarna"]
+			"anotimp": ["primavara","vara"]
 		},
 		{
 			"fisier": "PlanetX.png",
 			"descriere": "Planet X",
-			"anotimp": ["iarna"]
+			"anotimp": ["vara"]
 		},
 		{
 			"fisier": "Root.png",
 			"descriere": "Root",
-			"anotimp": ["primavara","iarna"]
+			"anotimp": ["primavara","vara"]
 		},
 		{
 			"fisier": "SantaMaria.png",
 			"descriere": "Santa Maria",
-			"anotimp": ["primavara","iarna"]
+			"anotimp": ["primavara","vara"]
 		},
 		{
 			"fisier": "Scythe.png",
 			"descriere": "Scythe",
-			"anotimp": ["primavara","iarna"]
+			"anotimp": ["primavara","vara"]
 		},
 		{
 			"fisier": "Terraforming.png",
 			"descriere": "Terraforming Mars",
-			"anotimp": ["primavara","iarna"]
+			"anotimp": ["primavara","vara"]
 		}
 	]
 }

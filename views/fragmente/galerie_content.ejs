@@ -1,0 +1,13 @@
+
+<% const gridAreas = ["img1", "img2", "img3", "img4", "img5", "img6", "img7", "img8", "img9", "img10"]; %>
+<section class="grid-galerie">
+    <% for (let i = 0; i < Math.min(imagini.length, 10); i++) { %>
+        <figure class="<%= gridAreas[i] %>">
+            <picture>
+                <source srcset="<%= imagini[i].fisier_mediu %>" type="image/webp">
+                <img src="<%= imagini[i].fisier %>" alt="<%= imagini[i].alt || imagini[i].fisier.split('/').pop().split('.')[0] %>">
+            </picture>
+            <figcaption><%= imagini[i].descriere %></figcaption>
+        </figure>
+    <% } %>
+</section>
